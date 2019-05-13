@@ -1,23 +1,23 @@
 VALIDATIONS:
--name
-  -must be present
-  -must contain only a-z
+#-name
+#  -must be present
+#  -must contain only a-z
 
--username
-  -must be unique
-  -must be present
-  -must be at least 8 characters
+#-username
+#  -must be unique
+#  -must be present
+#  -must be at least 8 characters
+  -Validate against both student and mentor models?
 
--email
-  -must be present
-  -must be unique
-  -must end with @abc.com => gem for this?
+#-email
+#  -must be present
+#  -must be unique
+#  -must end with @ abc.com => gem for this?
 
 
--password
-  -must be present
-  -must be at least 8 characters
-  -must contain one uppercase and one number
+#-password
+#  -must be present
+#  -must be at least 8 characters
 
 -authorizations
   -student's can't access new, create, edit, and update resource paths
