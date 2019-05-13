@@ -10,7 +10,7 @@ class CreateMentors < ActiveRecord::Migration[5.2]
       t.string :github_link
       t.integer :student_id
       t.string :password_digest
-      
+
       t.timestamps
     end
   end
