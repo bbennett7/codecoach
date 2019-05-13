@@ -1,0 +1,2 @@
+class Subfield < ApplicationRecord
+end

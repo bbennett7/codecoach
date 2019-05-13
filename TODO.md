@@ -1,0 +1,15 @@
+-Make Models
+  -Mentor
+  -Student
+  -Language
+  -Sub-area
+  -Resource
+  -Languages_mentors
+  -Languages_students
+
+-Make Controllers
+  -Mentors
+  -Students
+  -Languages
+  -Resources
+  -Sessions
