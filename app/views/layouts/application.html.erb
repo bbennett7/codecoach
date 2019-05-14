@@ -13,4 +13,9 @@
     <h1>Code Mentor</h1>
     <%= yield %>
   </body>
+  <footer>
+    <% if session[:user_id] %>
+      <%= link_to "Log Out", logout_path %>
+    <% end %>
+  </footer>
 </html>
