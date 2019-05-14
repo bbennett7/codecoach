@@ -1,6 +1,6 @@
-<h2>Mentor login</h2>
+<h2>Student login</h2>
 
-<%= form_for @mentor do |f| %>
+<%= form_for @student, url: login_path do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br><br>
 
