@@ -32,6 +32,7 @@ gem 'omniauth-github', '~> 1.3'
 gem 'dotenv-rails'
 
 gem 'valid_email'
+gem 'dynamic_form', '~> 1.1', '>= 1.1.4'
 
 
 # Use ActiveStorage variant

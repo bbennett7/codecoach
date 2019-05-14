@@ -19,11 +19,17 @@
 #  -Student has_secure_password
 #  -Mentor has validations
 #  -Student has validations
-  -Mentor can signup via username/password
-  -Student can signup via username/password 
+#  -Mentor can signup via username/password
+  -Student can signup via username/password
   -Mentor can signup login via Google or GitHub
   -Student can signup login via Google or GitHub
 
 -Set up login /authentication
 
 -Set up authorization
+
+-Validations for other models
+
+-Refactor with partials
+
+-Render error messages on sign up  
