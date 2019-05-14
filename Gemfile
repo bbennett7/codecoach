@@ -31,6 +31,8 @@ gem 'omniauth-google-oauth2', '~> 0.6.1'
 gem 'omniauth-github', '~> 1.3'
 gem 'dotenv-rails'
 
+gem 'valid_email'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
