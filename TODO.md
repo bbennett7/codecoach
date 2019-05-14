@@ -21,8 +21,8 @@
 #  -Student has validations
 #  -Mentor can signup via username/password
 #  -Student can signup via username/password
-  -Mentor can login with username/password
-  -Student can login with username/password 
+#  -Mentor can login with username/password
+#  -Student can login with username/password 
   -Mentor can signup login via Google or GitHub
   -Student can signup login via Google or GitHub
 
