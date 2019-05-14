@@ -14,7 +14,7 @@
     <%= yield %>
   </body>
   <footer>
-    <% if session[:user_id] %>
+    <% if session_id %>
       <%= link_to "Log Out", logout_path %>
     <% end %>
   </footer>
