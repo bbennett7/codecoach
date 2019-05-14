@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   get '/mentor_login', to: 'sessions#mentor_new'
   get '/student_login', to: 'sessions#student_new'
-  post '/login', to: 'sessions#create'
+  
+  post '/mentor_login', to: 'sessions#mentor_create'
+  post '/student_login', to: 'sessions#student_create'
 
   get '/logout', to: 'sessions#logout'
 
