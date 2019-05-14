@@ -13,7 +13,7 @@ class Mentor < ApplicationRecord
   validates :last_name, presence: { message: 'Last name cannot be blank.' }
   validates :email, presence: { message: 'Email cannot be blank.' }
   validates :email, uniqueness: { message: 'There is already an account associated with this email address.' }
-  validates :email_format, message: 'This is not a valid email address.'
+#  validates :email, :email_format 
   validates :github_link, presence: { message: 'Github link cannot be blank.' }
   validates :github_link, uniqueness: { message: 'There is already an account associated with this Github link.' }
   validates :password, presence: { message: 'Password cannot be blank.' }
@@ -23,6 +23,10 @@ class Mentor < ApplicationRecord
     first = email.index("@")
     second = email.index(".")
 
-    true if !first.nil? && !second.nil? && first < second
+    if !first.nil? && !second.nil? && first < second
+      true
+    else
+      false
+    end
   end
 end
