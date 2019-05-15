@@ -16,7 +16,13 @@ class StudentsController < ApplicationController
   end
 
   def show
+  end
 
+  def update
+    @student = Student.find_by_id(session[:student_id])
+    @student.update(student_params)
+
+    redirect_to student_path(@student)
   end
 
   private

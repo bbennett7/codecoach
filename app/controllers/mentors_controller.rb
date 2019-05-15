@@ -23,6 +23,9 @@ class MentorsController < ApplicationController
 
   def update
     @mentor = Mentor.find_by_id(session[:mentor_id])
+    @mentor.update(mentor_params)
+
+    redirect_to mentor_path(@mentor)
   end
 
   private

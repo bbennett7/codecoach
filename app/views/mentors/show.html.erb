@@ -3,10 +3,12 @@
 
 <img src=<%= current_user.profile_img %> width="125" height="125">
 
+<%= link_to "Edit profile", edit_mentor_path %>
+
 <h3>Your Programming Languages</h3>
 <% if current_user.languages.empty? %>
-  <p>You have not added any languages yet.</p>
-  <%= link_to "Add Languages", edit_mentor_path %>
+  <p>You have not added any of your languages yet.</p>
+  <%= link_to "Add Languages", new_language_path %>
 <% else %>
   <% current_user.languages.each do |language| %>
   <p><%= language.name %></p>
