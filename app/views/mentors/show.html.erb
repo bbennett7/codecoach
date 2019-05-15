@@ -1,1 +1,24 @@
-<h1>Welcome Mentor</h1>
+<h1><%= current_user.username %></h1>
+<h3><%= current_user.location %></h3>
+
+<img src=<%= current_user.profile_img %> width="125" height="125">
+
+<h3>Your Programming Languages</h3>
+<% if current_user.languages.empty? %>
+  <p>You have not added any languages yet.</p>
+  <%= link_to "Add Languages", edit_mentor_path %>
+<% else %>
+  <% current_user.languages.each do |language| %>
+  <p><%= language.name %></p>
+  <% end %>
+<% end %>
+
+<h3>Recently Added Resources</h3>
+<% if current_user.resources.empty? %>
+  <p>You have not added any resources yet.</p>
+  <%= link_to "Add Resource", new_resource_path %>
+<% else %>
+  <% current_user.resources.last(5).each do |resource| %>
+  <p><%= resource.site %> - <%= resource.title %></p>
+  <% end %>
+<% end %>

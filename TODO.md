@@ -27,10 +27,16 @@
 #  -Student can signup login via GitHub
 
 -Set up login /authentication
+#  -Mentor can login via github or username/password
+#  -Student can login via username/password
 
--Set up authorization
+
+-Set up authorization (diff than authentication)
 
 -Validations for other models
+  -Need to revisit email validation
+
+-Build user homepage
 
 -Refactor with partials
 
