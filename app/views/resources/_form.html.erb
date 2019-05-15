@@ -1,0 +1,23 @@
+<%= form_for resource do |f| %>
+  <%= f.label :website, "Resource site (i.e. StackOverflow.com, RubyOnRails.org)" %><br>
+  <%= f.text_field :website %><br>
+
+  <%= f.label :title, "Resource title" %><br>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :url, "Link to resource"%><br>
+  <%= f.text_field :url%><br>
+
+  <%= f.label :language_id, "Language" %><br>
+  <%= f.collection_select :language_id, Language.all, :id, :name, :include_blank => true %><br>
+
+  <%= f.label :subfield_id, "Choose a subfield" %><br>
+  <%= f.collection_select :subfield_id, Subfield.all, :id, :name, :include_blank => true %><br>
+
+  <%= f.label :subfield_id, "Or create a new subfield" %>
+  <%= f.text_field :subfield_id %>
+
+  <%= f.hidden_field :mentor_id, value: current_user.id %>
+
+  <%= f.submit "Add resource" %>
+<% end %>

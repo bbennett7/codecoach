@@ -42,5 +42,10 @@
 #-Can add languages to profile
 -Can delete languages from profile
 
+-Build resource show page
+-Build resource edit page
+-Build resource index page 
+
+
 -Refactor with partials
 -Render error messages on sign up  
