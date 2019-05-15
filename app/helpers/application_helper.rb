@@ -8,6 +8,6 @@ module ApplicationHelper
       Mentor.find_by_id(session[:mentor_id])
     elsif session[:student_id]
       Student.find_by_id(session[:student_id])
-    end 
+    end
   end
 end

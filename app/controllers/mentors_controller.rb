@@ -1,7 +1,6 @@
 class MentorsController < ApplicationController
   def new
     @mentor = Mentor.new
-
   end
 
   def create
@@ -9,7 +8,7 @@ class MentorsController < ApplicationController
 
     if @mentor.save
       return head(:forbidden) unless @mentor.authenticate(params[:mentor][:password])
-      session[:user_id] = @mentor.id
+      session[:mentor_id] = @mentor.id
       redirect_to mentor_path(@mentor)
     else
       redirect_to new_mentor_path
@@ -17,7 +16,7 @@ class MentorsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   private

@@ -1,35 +1,6 @@
 <h2>Sign up to be a mentor</h2>
 
-<%= form_for @mentor do |f|%>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br><br>
-
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br><br>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br><br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %><br><br>
-
-  <%= f.label :profile_img, "Profile Picture (URL)" %>
-  <%= f.text_field :profile_img %><br><br>
-
-  <%= f.label :location %>
-  <%= f.text_field :location %><br><br>
-
-  <%= f.label :github_link %>
-  <%= f.text_field :github_link %><br><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %><br><br>
-
-  <%= f.label :password_confirmation, "Confirm password" %>
-  <%= f.password_field :password_confirmation %><br><br>
-
-  <%= f.submit "Sign Up" %>
-<% end %>
+<%= render partial: 'application/form', locals: {user: @mentor} %> 
 
 <img src="/images/btn_google_signin_light_normal_web.png" alt="Sign in with Google"/><br>
 
