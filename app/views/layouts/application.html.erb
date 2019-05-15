@@ -15,7 +15,11 @@
     <h1>Code Mentor</h1>
     <% if session_id && session[:mentor_id] %>
       <nav>
+        <%= link_to "Home", mentor_path(current_user) %>
+        <%= link_to "Edit Profile", edit_mentor_path(current_user) %>
+        <%= link_to "My Resources", mentor_resources_path(current_user) %>
         <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
+        <p> My student </p>
         <%= link_to "Log Out", logout_path %>
     <% end %>
     <%= yield %>

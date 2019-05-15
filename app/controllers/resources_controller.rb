@@ -9,7 +9,7 @@ class ResourcesController < ApplicationController
 
   def create
     if !params[:resource][:subfield][:name].nil?
-      subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name])
+      subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name].strip)
       subfield.language_id = params[:resource][:language_id]
       subfield.save
 

@@ -26,6 +26,6 @@
   <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
 <% else %>
   <% current_user.resources.last(5).each do |resource| %>
-  <p><%= resource.site %> - <%= resource.title %></p>
+  <p><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource) %></p>
   <% end %>
 <% end %>
