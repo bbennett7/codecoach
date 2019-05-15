@@ -44,7 +44,7 @@
 
 -Build resource show page
 -Build resource edit page
--Build resource index page 
+-Build resource index page
 
 
 -Refactor with partials

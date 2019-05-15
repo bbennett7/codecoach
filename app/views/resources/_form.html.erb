@@ -15,9 +15,12 @@
   <%= f.collection_select :subfield_id, Subfield.all, :id, :name, :include_blank => true %><br>
 
   <%= f.label :subfield_id, "Or create a new subfield" %>
-  <%= f.text_field :subfield_id %>
+
+  <%= f.fields_for :subfield, Subfield.new do |subfields_field| %>
+    <%= subfields_field.text_field :name %>
+  <% end %>
 
   <%= f.hidden_field :mentor_id, value: current_user.id %>
 
-  <%= f.submit "Add resource" %>
+  <%= f.submit "Add Resource" %>
 <% end %>

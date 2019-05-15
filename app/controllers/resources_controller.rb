@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   def index
-    
+
   end
 
   def new
@@ -8,8 +8,10 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    if !Subfield.find_by_id(id: resource_params[:subfield_id])
-      subfield = Subfield.create(name: resource_params[:subfield_id], language_id: resource_params[:language_id])
+    if !params[:resource][:subfield][:name].nil?
+      subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name])
+      subfield.language_id = params[:resource][:language_id]
+      subfield.save
 
       params[:resource][:subfield_id] = subfield.id
     end

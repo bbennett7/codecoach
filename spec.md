@@ -16,7 +16,7 @@ Specs:
 # Include logout (how e.g. Devise) -- MENTOR AND STUDENT
 # Include third party signup/login (how e.g. Devise/OmniAuth) -- GITHUB
 
- Include nested resource show or index (URL e.g. users/2/recipes) -- MENTOR/ID/RESOURCES & STUDENT/ID/RESOURCES
+# Include nested resource show or index (URL e.g. users/2/recipes) -- MENTOR/ID/RESOURCES & STUDENT/ID/RESOURCES
 # Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) -- MENTOR/ID/RESOURCES/NEW && EDIT
  Include form display of validation errors (form URL e.g. /recipes/new) -- SHOULD BE ON ALL FORMS
 
