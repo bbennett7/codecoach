@@ -16,6 +16,15 @@ class LanguagesController < ApplicationController
     end
   end
 
+  def edit
+    @language = Language.new
+  end
+
+  def destroy
+    @languages
+    @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
+  end
+
   private
 
   def language_params

@@ -39,7 +39,8 @@
 #-Build user homepage
 #-BUild user edit profile page
 
--Can add languages on profile edit page
+#-Can add languages to profile
+-Can delete languages from profile
 
 -Refactor with partials
 -Render error messages on sign up  

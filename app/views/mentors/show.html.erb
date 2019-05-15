@@ -1,9 +1,12 @@
 <h1><%= current_user.username %></h1>
 <h3><%= current_user.location %></h3>
 
+
 <img src=<%= current_user.profile_img %> width="125" height="125">
 
+
 <%= link_to "Edit profile", edit_mentor_path %>
+
 
 <h3>Your Programming Languages</h3>
 <% if current_user.languages.empty? %>
@@ -12,9 +15,10 @@
   <% current_user.languages.each do |language| %>
   <p><%= language.name %></p>
   <% end %>
-  <%= link_to "Edit Your Languages", edit_language_path %>
+  <%= link_to "Delete languages", edit_language_path %>
 <% end %>
-<%= link_to "Add Languages", new_language_path %>
+<%= link_to "Add language", new_language_path %>
+
 
 <h3>Recently Added Resources</h3>
 <% if current_user.resources.empty? %>
