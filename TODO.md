@@ -36,8 +36,10 @@
 -Validations for other models
   -Need to revisit email validation
 
--Build user homepage
+#-Build user homepage
+#-BUild user edit profile page
+
+-Can add languages on profile edit page
 
 -Refactor with partials
-
 -Render error messages on sign up  

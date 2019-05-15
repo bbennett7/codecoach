@@ -1,0 +1,11 @@
+<h1>Add a language to your profile</h1>
+
+<h3>Choose a language from the dropdown menu, or add a new language:</h3>
+
+<%= form_for @language do |f| %>
+  <%= f.label "Select a language" %>
+  <%= f.collection_select :name, Language.all, :id, :name, :include_blank => true %><br>
+  <%= f.label "Or, add a new language" %>
+  <%= f.text_field :name %>
+  <%= f.submit "Add language" %>
+<% end %>
