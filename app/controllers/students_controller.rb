@@ -26,6 +26,19 @@ class StudentsController < ApplicationController
     redirect_to student_path(@student)
   end
 
+  def add_mentor
+    @mentor = Mentor.find_by_id(params[:mentor_id])
+    @student = Student.find_by_id(session[:student_id])
+
+    @student.mentor = @mentor
+
+    redirect_to mentor_path(@student.mentor)
+  end
+
+  def show_mentor
+    
+  end
+
   private
 
   def student_params

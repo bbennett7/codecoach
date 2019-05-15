@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :resources
   resources :languages
-  resources :students
 
   resources :mentors do
     resources :resources
+  end
+
+  resources :students do
+    resources :resources, only: [:index, :show, :update]
   end
 
   root to: 'application#index'
@@ -18,5 +21,9 @@ Rails.application.routes.draw do
   post '/student_login', to: 'sessions#student_create'
 
   get '/logout', to: 'sessions#logout'
+
+  get '/student/:id/mentor', to: 'students#show_mentor', as: 'student_mentor'
+
+  post '/add_mentor', to: 'students#add_mentor'
 
 end

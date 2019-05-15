@@ -1,4 +1,8 @@
 class MentorsController < ApplicationController
+  def index
+    @available_mentors = Mentor.all.collect{|mentor| mentor if mentor.student.nil?}
+  end
+
   def new
     @mentor = Mentor.new
   end
@@ -16,6 +20,7 @@ class MentorsController < ApplicationController
   end
 
   def show
+    @mentor = Mentor.find_by_id(params[:id])
   end
 
   def edit
