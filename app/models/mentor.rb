@@ -6,6 +6,7 @@ class Mentor < ApplicationRecord
   has_many :resources
   belongs_to :student, required: false
 
+
   has_secure_password
 
   validates :username, presence: { message: 'Username cannot be blank.' }

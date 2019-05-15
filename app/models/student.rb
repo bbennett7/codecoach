@@ -4,7 +4,7 @@ class Student < ApplicationRecord
   has_many :languages_students
   has_many :languages, through: :languages_students
   has_one :mentor
-  has_many :resources, through: :mentor
+  delegate :resources, to: :mentor
 
   has_secure_password
 
