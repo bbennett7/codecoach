@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :resources
   resources :languages
   resources :students
-  resources :mentors
 
-  resources :mentors, only: [:show] do
+  resources :mentors do
     resources :resources
   end
 

@@ -23,7 +23,7 @@
 <h3>Recently Added Resources</h3>
 <% if current_user.resources.empty? %>
   <p>You have not added any resources yet.</p>
-  <%= link_to "Add Resource", new_resource_path %>
+  <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
 <% else %>
   <% current_user.resources.last(5).each do |resource| %>
   <p><%= resource.site %> - <%= resource.title %></p>

@@ -15,12 +15,12 @@
     <h1>Code Mentor</h1>
     <% if session_id && session[:mentor_id] %>
       <nav>
-        <%= link_to "Add new resource", new_resource_path %>
+        <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
         <%= link_to "Log Out", logout_path %>
     <% end %>
     <%= yield %>
   </body>
-  
+
   <footer>
   </footer>
 </html>
