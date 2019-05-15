@@ -8,6 +8,7 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.string :profile_img
       t.string :location
       t.string :github_link
+      t.string :uid 
       t.string :password_digest
 
       t.timestamps

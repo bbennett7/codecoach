@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_205021) do
     t.string "profile_img"
     t.string "location"
     t.string "github_link"
+    t.string "uid"
     t.integer "student_id"
     t.string "password_digest"
     t.datetime "created_at", null: false
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_205021) do
     t.string "profile_img"
     t.string "location"
     t.string "github_link"
+    t.string "uid"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
