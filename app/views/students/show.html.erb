@@ -1,1 +1,30 @@
-<h1> <%=@student.username %> </h1>
+<h1><%= current_user.username %></h1>
+<h3><%= current_user.location %></h3>
+
+
+<img src=<%= current_user.profile_img %> width="125" height="125">
+
+
+<%= link_to "Edit profile", edit_student_path %>
+
+
+<h3>Your Programming Languages</h3>
+<% if current_user.languages.empty? %>
+  <p>You have not added any of your languages yet.</p>
+<% else %>
+  <% current_user.languages.each do |language| %>
+  <p><%= language.name %></p>
+  <% end %>
+  <%= link_to "Delete languages", edit_language_path %>
+<% end %>
+<%= link_to "Add language", new_language_path %>
+
+
+<h3>Recently Added Resources</h3>
+<% if current_user.mentor.resources.empty? %>
+  <p><%= current_user.mentor.first_name %> has not added any resources yet.</p>
+<% else %>
+  <% current_user.mentor.resources.last(5).each do |resource| %>
+  <p><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource) %></p>
+  <% end %>
+<% end %>

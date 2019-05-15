@@ -36,7 +36,6 @@ class StudentsController < ApplicationController
   end
 
   def show_mentor
-    
   end
 
   private

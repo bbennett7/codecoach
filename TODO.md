@@ -14,7 +14,7 @@
 #  -Resources
 #  -Sessions
 
--Set up signup/authentication
+#-Set up signup/authentication
 #  -Mentor has_secure_password
 #  -Student has_secure_password
 #  -Mentor has validations
@@ -26,7 +26,7 @@
 #  -Mentor can signup login via GitHub
 #  -Student can signup login via GitHub
 
--Set up login /authentication
+#-Set up login /authentication
 #  -Mentor can login via github or username/password
 #  -Student can login via username/password
 
@@ -42,9 +42,12 @@
 #-Can add languages to profile
 -Can delete languages from profile
 
--Build resource show page
--Build resource edit page
--Build resource index page
+#-Build resource show page
+#-Build resource edit page
+#-Build resource index page
+
+-Student can mark resource as read
+-Student can rate resource 
 
 
 -Refactor with partials

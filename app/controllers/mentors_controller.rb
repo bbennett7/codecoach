@@ -33,6 +33,9 @@ class MentorsController < ApplicationController
     redirect_to mentor_path(@mentor)
   end
 
+  def show_student
+  end
+
   private
 
   def mentor_params

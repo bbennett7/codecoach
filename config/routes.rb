@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get '/student/:id/mentor', to: 'students#show_mentor', as: 'student_mentor'
 
+  get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'
+
   post '/add_mentor', to: 'students#add_mentor'
 
 end
