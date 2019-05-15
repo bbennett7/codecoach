@@ -16,7 +16,13 @@ class MentorsController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
+
+  def update
+    @mentor = Mentor.find_by_id(session[:mentor_id])
   end
 
   private

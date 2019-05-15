@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
 
     if @student.save
       return head(:forbidden) unless @student.authenticate(params[:student][:password])
-      session[:user_id] = @student.id
+      session[:student_id] = @student.id
       redirect_to student_path(@student)
     else
       redirect_to new_student_path
