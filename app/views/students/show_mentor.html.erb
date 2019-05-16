@@ -1,24 +1,24 @@
+<div class="main">
+  <% if !current_user.mentor.profile_img.empty? %>
+    <img src=<%= current_user.mentor.profile_img %> width="125" height="125">
+  <% else %>
+    <img src='/images/no-photo.png' width="125" height="125">
+  <% end %>
+
 <h1><%= current_user.mentor.first_name %></h1>
+<h3><%= current_user.mentor.username %></h3>
 <h3><%= current_user.mentor.location %></h3>
 
+<br>
 
-<img src=<%= current_user.mentor.profile_img %> width="125" height="125">
-
-
-<h3><%= current_user.mentor.first_name %>'s Programming Languages</h3>
+<h3><%= current_user.mentor.first_name %>'s programming languages</h3>
 <% if current_user.mentor.languages.empty? %>
-  <p><%= current_user.mentor.first_name %> does not have any programming languages added yet.</p>
+  <p><%= current_user.mentor.first_name %> has not added any programming languages yet.</p>
 <% else %>
-  <% current_user.mentor.languages.each do |language| %>
-  <p><%= language.name %></p>
-  <% end %>
+  <ul>
+    <% current_user.mentor.languages.each do |language| %>
+    <li><%= language.name %></li>
+    <% end %>
+  </ul>
 <% end %>
-
-<h3>Recently Added Resources</h3>
-<% if current_user.resources.empty? %>
-  <p><%= current_user.mentor.first_name %> has not added any resources yet.</p>
-<% else %>
-  <% current_user.mentor.resources.last(5).each do |resource| %>
-  <p><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource) %></p>
-  <% end %>
-<% end %>
+</div>
