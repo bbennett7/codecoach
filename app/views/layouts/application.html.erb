@@ -4,6 +4,9 @@
     <title>Code Mentor</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Raleway:200,400');
+    </style>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,8 +14,11 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
 
+
   <body>
-    <h1>Code Mentor</h1>
+    <header class="sans_serif">
+      code<b>mentor</b>
+    </header>
     <% if session_id && session[:mentor_id] %>
       <nav>
         <%= link_to "Home", mentor_path(current_user) %>
@@ -28,7 +34,9 @@
       <nav>
         <%= link_to "Home", student_path(current_user) %>
         <%= link_to "Edit Profile", edit_student_path(current_user) %>
-        <%= link_to "My Resources", mentor_resources_path(current_user) %>
+        <% if current_user.mentor %>
+          <%= link_to "My Resources", mentor_resources_path(current_user) %>
+        <% end %>
         <%= link_to "Top Resources", top_resources_path %>
         <% if current_user.mentor.nil? %>
           <%= link_to "Find a mentor", mentors_path %>

@@ -46,8 +46,8 @@
 #-Build resource edit page
 #-Build resource index page
 
--Student can mark resource as read
--Student can rate resource 
+#-Student can mark resource as read
+#-Student can rate resource 
 
 
 -Refactor with partials
