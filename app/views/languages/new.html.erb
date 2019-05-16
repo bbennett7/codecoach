@@ -4,7 +4,7 @@
 
 <%= form_for @language do |f| %>
   <%= f.label "Select a language" %>
-  <%= f.collection_select :name, Language.all, :id, :name, :include_blank => true %><br>
+  <%= f.collection_select :id, Language.all, :id, :name, :include_blank => true %><br>
   <%= f.label "Or, add a new language" %>
   <%= f.text_field :name %>
   <%= f.submit "Add language" %>

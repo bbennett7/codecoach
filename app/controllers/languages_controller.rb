@@ -4,8 +4,12 @@ class LanguagesController < ApplicationController
   end
 
   def create
-    @language = Language.find_or_create_by(name: language_params[:name])
-
+    if !language_params[:name].empty?
+      @language = Language.find_or_create_by(name: language_params[:name])
+    else
+      @language = Language.find_by_id(params[:language][:id])
+    end
+    
     @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
     @user.languages << @language
 
