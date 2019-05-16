@@ -1,26 +1,28 @@
-<h1>edit your profile</h1>
+<div class="main">
+  <h1>edit your profile</h1>
 
-<%= form_for user do |f|%>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br><br>
+  <%= form_for user do |f|%>
+    <p><%= f.label :first_name, "first name" %>
+    <%= f.text_field :first_name %></p>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br><br>
+    <p><%= f.label :last_name, "last name" %>
+    <%= f.text_field :last_name %></p>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br><br>
+    <p><%= f.label :username, "username" %>
+    <%= f.text_field :username %></p>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %><br><br>
+    <p><%= f.label :email, "email" %>
+    <%= f.text_field :email %></p>
 
-  <%= f.label :profile_img, "Profile Picture (URL)" %>
-  <%= f.text_field :profile_img %><br><br>
+    <p><%= f.label :profile_img, "profile picture (url)" %>
+    <%= f.text_field :profile_img %></p>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %><br><br>
+    <p><%= f.label :location, "location" %>
+    <%= f.text_field :location %></p>
 
-  <%= f.label :github_link %>
-  <%= f.text_field :github_link %><br><br>
+    <p><%= f.label :github_link, "github link" %>
+    <%= f.text_field :github_link %></p>
 
-  <%= f.submit "Edit profile" %>
-<% end %>
+    <%= f.submit "update profile" %>
+  <% end %>
+</div>
