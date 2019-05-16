@@ -1,14 +1,6 @@
 <h2>Mentor login</h2>
 
-<%= form_for @mentor, url: mentor_login_path do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %><br><br>
-
-  <%= f.submit "Log In" %>
-<% end %>
+<%= render partial: 'form', locals: {user: @mentor, path: mentor_login_path(@mentor)} %>
 
 <img src="images/btn_google_signin_light_normal_web.png" alt="Sign in with Google"/><br>
 
