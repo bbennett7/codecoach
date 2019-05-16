@@ -18,7 +18,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
 
     @resource.save
-    
+
     redirect_to mentor_resource_path(@resource.mentor, @resource)
   end
 
@@ -31,12 +31,24 @@ class ResourcesController < ApplicationController
     @resource = Resource.find_by_id(params[:id])
   end
 
-  def update
-    @student = Student.find_by_id(session[:student_id])
+  def edit
     @resource = Resource.find_by_id(params[:id])
-    @resource.update(resource_params)
+  end
 
-    redirect_to mentor_resource_path(@student.mentor, @resource)
+  def update
+    if session[:student_id]
+      @student = Student.find_by_id(session[:student_id])
+      @resource = Resource.find_by_id(params[:id])
+      @resource.update(resource_params)
+
+      redirect_to mentor_resources_path(@student.mentor)
+    elsif session[:mentor_id]
+      @mentor = Mentor.find_by_id(session[:mentor_id])
+      @resource = Resource.find_by_id(params[:id])
+      @resource.update(resource_params)
+      
+      redirect_to mentor_resources_path(@mentor)
+    end
   end
 
   private

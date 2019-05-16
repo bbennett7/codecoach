@@ -1,3 +1,7 @@
-<h1>Edit <%= @resource.title %></h1>
+<div class="main">
 
-<%= render partial: 'form', locals: {resource: @resource } %>
+  <h1>edit <%= @resource.title %></h1>
+
+  <%= render partial: 'form', locals: {resource: @resource, submit_text: "update resource" } %>
+
+</div>
