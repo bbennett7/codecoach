@@ -49,7 +49,7 @@ nav h4 {
   margin-top: 0px;
 }
 
-h1, h2, h3, h4, h5, h6, input[type=submit] {
+h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit] {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
 }
@@ -82,7 +82,13 @@ input[type=submit] {
   color: rgb(219, 221, 224);
   font-size: 1em;
   padding: 6px 40px;
-  border-radius: 5px; 
+  border-radius: 5px;
+}
+
+select {
+  background-color: rgb(219, 221, 224);
+  color: rgb(4, 56, 39);
+  font-size: .9em; 
 }
 
 .main img {

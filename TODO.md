@@ -45,9 +45,9 @@
 #-Student can rate resource
 
 # -Put green border around profile pictures
-
 #-Can delete languages from profile
-
+#-Style submit buttons
+#-Style dropdown menus
 
 -Set up authorization (diff than authentication)
 -Continue to refactor with partials
@@ -55,8 +55,6 @@
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes
--Style buttons
--Style dropdown menus
 -Style student submit read and rating
 -Organize display of resources by language and then by subfield
 -Refactor profile displays into partial
