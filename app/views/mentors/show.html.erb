@@ -1,13 +1,1 @@
 <%= render partial: 'application/show_profile' %> 
-
-<div class="recent_resources_col">
-  <h3>recently added resources</h3>
-  <% if current_user.resources.empty? %>
-    <p>You have not added any resources yet.</p>
-    <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
-  <% else %>
-    <% current_user.resources.last(5).each do |resource| %>
-    <p><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource) %></p>
-    <% end %>
-  <% end %>
-</div>
