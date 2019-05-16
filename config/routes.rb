@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'
+  
   resources :resources
   resources :languages
 
@@ -27,5 +29,4 @@ Rails.application.routes.draw do
   get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'
 
   post '/add_mentor', to: 'students#add_mentor'
-
 end

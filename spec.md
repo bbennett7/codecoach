@@ -9,7 +9,7 @@ Specs:
 
 # Include reasonable validations for simple model objects -- LANGUAGE, MENTOR, RESOURCE, STUDENT, SUBFIELD
 
- Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) -- Resources/highest_rated, Resource.highest_rated, add rating column
+ Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) -- Resources/top_rated, Resource.top_rated
 
 # Include signup (how e.g. Devise) -- MENTOR AND STUDENT
 # Include login (how e.g. Devise) -- MENTOR AND STUDENT

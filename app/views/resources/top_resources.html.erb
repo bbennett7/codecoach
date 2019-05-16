@@ -1,0 +1,12 @@
+
+<% if @top_resources.empty? %>
+  <p>There are no resources with a rating of 10</p>
+<% else %>
+  <ul>
+  <% @top_resources.each do |resource| %>
+    <li>
+      <%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

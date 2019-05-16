@@ -19,6 +19,7 @@
         <%= link_to "Edit Profile", edit_mentor_path(current_user) %>
         <%= link_to "My Resources", mentor_resources_path(current_user) %>
         <%= link_to "Add Resource", new_mentor_resource_path(current_user) %>
+        <%= link_to "Top Resources", top_resources_path %>
         <% if !current_user.student.nil? %>
           <%= link_to "My student", mentor_student_path(current_user) %>
         <% end %>
@@ -28,6 +29,7 @@
         <%= link_to "Home", student_path(current_user) %>
         <%= link_to "Edit Profile", edit_student_path(current_user) %>
         <%= link_to "My Resources", mentor_resources_path(current_user) %>
+        <%= link_to "Top Resources", top_resources_path %>
         <% if current_user.mentor.nil? %>
           <%= link_to "Find a mentor", mentors_path %>
         <% else %>

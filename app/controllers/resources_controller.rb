@@ -1,6 +1,5 @@
 class ResourcesController < ApplicationController
   def index
-
   end
 
   def new
@@ -22,13 +21,26 @@ class ResourcesController < ApplicationController
     redirect_to mentor_resource_path(@resource.mentor, @resource)
   end
 
+  def top_resources
+    @top_resources = Resource.top_resources
+    @top_resources.compact!
+  end
+
   def show
     @resource = Resource.find_by_id(params[:id])
+  end
+
+  def update
+    @student = Student.find_by_id(session[:student_id])
+    @resource = Resource.find_by_id(params[:id])
+    @resource.update(resource_params)
+
+    redirect_to mentor_resource_path(@student.mentor, @resource)
   end
 
   private
 
   def resource_params
-    params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :mentor_id)
+    params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :mentor_id, :read, :student_rating)
   end
 end
