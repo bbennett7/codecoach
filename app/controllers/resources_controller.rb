@@ -7,7 +7,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    if !params[:resource][:subfield][:name].nil?
+    if !params[:resource][:subfield][:name].empty?
       subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name].strip)
       subfield.language_id = params[:resource][:language_id]
       subfield.save
@@ -16,8 +16,9 @@ class ResourcesController < ApplicationController
     end
 
     @resource = Resource.new(resource_params)
-    @resource.save
 
+    @resource.save
+    
     redirect_to mentor_resource_path(@resource.mentor, @resource)
   end
 
