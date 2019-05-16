@@ -77,6 +77,10 @@ li {
   font-weight: 400;
 }
 
+.main img {
+  border: solid 3px rgb(4, 56, 39)
+}
+
 .access_section {
   width: 50%;
   min-height: 400px;

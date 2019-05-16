@@ -9,7 +9,7 @@ Specs:
 
 [x] Include reasonable validations for simple model objects // Language, mentor, resource, student and subfield all have validations
 
-[] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) -- Resources/top_rated, Resource.top_rated
+[X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) // Resources/top_rated, Resource.top_rated
 
 [x] Include signup (how e.g. Devise) // Mentor and student signups
 [x] Include login (how e.g. Devise) // Mentor and student logins
@@ -22,6 +22,6 @@ Specs:
 
 Confirm:
 [] The application is pretty DRY
-[] Limited logic in controllers
+[x] Limited logic in controllers
 [] Views use helper methods if appropriate
-[] Views use partials if appropriate
+[x] Views use partials if appropriate

@@ -4,17 +4,17 @@
 
 <% if session[:student_id] %>
 
-<h3>Have you read this resource?</h3>
+  <h3>Have you read this resource?</h3>
 
-<%= form_for @resource do |f| %>
-  <%= f.label :read, "Mark as read" %>
-  <%= f.check_box :read %><br>
-  <%= f.label "Did you find this resource helpful?" %>
-  <% [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
-    <%= f.label :student_rating, num %>
-    <%= f.radio_button :student_rating, num %>
+  <%= form_for @resource do |f| %>
+    <%= f.label :read, "Mark as read" %>
+    <%= f.check_box :read %><br>
+    <%= f.label "Did you find this resource helpful?" %>
+    <% [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
+      <%= f.label :student_rating, num %>
+      <%= f.radio_button :student_rating, num %>
+    <% end %>
+    <%= f.submit "Submit"%>
   <% end %>
-  <%= f.submit "Submit"%> 
-<% end %>
 
 <% end %>

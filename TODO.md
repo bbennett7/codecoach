@@ -30,25 +30,34 @@
 #  -Mentor can login via github or username/password
 #  -Student can login via username/password
 
-
--Set up authorization (diff than authentication)
-
--Validations for other models
-  -Need to revisit email validation
+#-Validations for other models
 
 #-Build user homepage
 #-BUild user edit profile page
 
 #-Can add languages to profile
--Can delete languages from profile
 
 #-Build resource show page
 #-Build resource edit page
 #-Build resource index page
 
 #-Student can mark resource as read
-#-Student can rate resource 
+#-Student can rate resource
+
+# -Put green border around profile pictures
+
+-Can delete languages from profile
 
 
--Refactor with partials
--Render error messages on sign up  
+-Set up authorization (diff than authentication)
+-Continue to refactor with partials
+-Render error messages on sign up
+-Refactor with helper methods
+-Take logic out of view and controller
+-Delete unused routes
+-Style buttons
+-Style dropdown menus
+-Style student submit read and rating
+-Organize display of resources by language and then by subfield
+-Refactor profile displays into partial
+-Make it so that at each page you automatically get @mentor or @student
