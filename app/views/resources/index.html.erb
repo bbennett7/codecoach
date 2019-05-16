@@ -1,9 +1,11 @@
-<h1>My resources</h1>
+<div class="main">
+  <h1>my resources</h1>
 
-<ul>
-<% current_user.resources.each do |resource| %>
-  <li>
-    <%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%>
-  </li>
-<% end %>
-</ul>
+  <ul>
+  <% current_user.resources.each do |resource| %>
+    <li>
+      <%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%>
+    </li>
+  <% end %>
+  </ul>
+</div>
