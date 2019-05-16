@@ -32,7 +32,6 @@ class LanguagesController < ApplicationController
 
     @languages.each do |lang_id|
       language = Language.find_by_id(lang_id)
-
       @user.languages.destroy(language)
     end
 

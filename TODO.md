@@ -46,7 +46,7 @@
 
 # -Put green border around profile pictures
 
--Can delete languages from profile
+#-Can delete languages from profile
 
 
 -Set up authorization (diff than authentication)
