@@ -12,13 +12,13 @@
   <h3>your programming languages</h3>
   <% if current_user.languages.empty? %>
     <p>You have not added any of your languages yet.</p>
+    <%= link_to "add language", new_or_delete_language_path %>
   <% else %>
     <ul>
     <% current_user.languages.each do |language| %>
     <li><%= language.name %></li>
     <% end %>
     </ul>
-    <%= link_to "Delete languages", edit_language_path %>
+    <%= link_to "add or delete languages", new_or_delete_language_path %>
   <% end %>
-  <%= link_to "Add language", new_language_path %>
 </div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'
-  
+  get '/languages/add_or_delete', to: 'languages#new_or_destroy', as: 'new_or_delete_language'
+
   resources :resources
   resources :languages
 
@@ -29,4 +30,6 @@ Rails.application.routes.draw do
   get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'
 
   post '/add_mentor', to: 'students#add_mentor'
+
+  post '/delete_language', to: 'languages#destroy'
 end

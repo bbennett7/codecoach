@@ -1,8 +1,0 @@
-<h3>Delete language below:</h3>
-
-<%= form_for @language, html: {method: :delete, url: language_path(@language)} do |f| %>
-  <%= f.label "Select a language" %>
-  <%= f.collection_check_boxes :name, current_user.languages, :id, :name %><br>
-
-  <%= f.submit "Delete language" %>
-<% end %>

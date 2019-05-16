@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  def new
+  def new_or_destroy
     @language = Language.new
   end
 
@@ -9,7 +9,7 @@ class LanguagesController < ApplicationController
     else
       @language = Language.find_by_id(params[:language][:id])
     end
-    
+
     @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
     @user.languages << @language
 
@@ -25,8 +25,22 @@ class LanguagesController < ApplicationController
   end
 
   def destroy
-    @languages
+    @languages = params[:language][:id]
+    @languages.delete("")
+
     @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
+
+    @languages.each do |lang_id|
+      language = Language.find_by_id(lang_id)
+
+      @user.languages.destroy(language)
+    end
+
+    if session[:mentor_id]
+      redirect_to mentor_path(@user)
+    elsif session[:student_id]
+      redirect_to student_path(@user)
+    end
   end
 
   private

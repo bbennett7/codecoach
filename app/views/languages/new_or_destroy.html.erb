@@ -10,4 +10,16 @@
     <%= f.text_field :name %><br><br>
     <%= f.submit "add language" %>
   <% end %>
+
+  <% if !current_user.languages.empty? %>
+  <br><hr>
+    <h3>delete a language from your profile:</h3>
+
+    <%= form_for @language, url: delete_language_path do |f| %>
+      <%= f.label :name, "select a language" %>
+      <%= f.collection_check_boxes :id, current_user.languages, :id, :name %><br><br>
+
+      <%= f.submit "delete language" %>
+    <% end %>
+  <% end %>
 </div>
