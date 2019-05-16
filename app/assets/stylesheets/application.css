@@ -48,10 +48,11 @@ a, a:visited {
 
 .access_section {
   width: 50%;
-  height: 400px;
+  min-height: 400px;
   background-color: white;
   margin: 30px 25% auto 25%;
   padding-top: 30px;
+  padding-bottom: 30px; 
   text-align: center
 }
 
