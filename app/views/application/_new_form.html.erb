@@ -1,30 +1,30 @@
 <%= form_for user do |f|%>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br><br>
+  <p><%= f.label :username %>
+  <%= f.text_field :username %></p><br><br>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br><br>
+  <p><%= f.label :first_name %>
+  <%= f.text_field :first_name %></p><br><br>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br><br>
+  <p><%= f.label :last_name %>
+  <%= f.text_field :last_name %></p><br><br>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %><br><br>
+  <p><%= f.label :email %>
+  <%= f.text_field :email %></p><br><br>
 
-  <%= f.label :profile_img, "Profile Picture (URL)" %>
-  <%= f.text_field :profile_img %><br><br>
+  <p><%= f.label :profile_img, "Profile Picture (URL)" %>
+  <%= f.text_field :profile_img %></p><br><br>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %><br><br>
+  <p><%= f.label :location %>
+  <%= f.text_field :location %></p><br><br>
 
-  <%= f.label :github_link %>
-  <%= f.text_field :github_link %><br><br>
+  <p><%= f.label :github_link %>
+  <%= f.text_field :github_link %></p><br><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br><br>
+  <p><%= f.label :password %>
+  <%= f.password_field :password %></p><br><br>
 
-  <%= f.label :password_confirmation, "Confirm password" %>
-  <%= f.password_field :password_confirmation %><br><br>
+  <p><%= f.label :password_confirmation, "Confirm password" %>
+  <%= f.password_field :password_confirmation %></p><br><br>
 
   <%= f.submit "Sign Up" %>
 <% end %>
