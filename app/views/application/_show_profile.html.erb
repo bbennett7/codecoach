@@ -1,0 +1,24 @@
+<div class="col_1">
+  <% if !current_user.profile_img.empty? %>
+    <img src=<%= current_user.profile_img %> width="125" height="125">
+  <% else %>
+    <img src='/images/no-photo.png' width="125" height="125">
+  <% end %>
+  <h1><%= current_user.username %></h1>
+  <h3><%= current_user.location %></h3>
+
+  <br>
+
+  <h3>your programming languages</h3>
+  <% if current_user.languages.empty? %>
+    <p>You have not added any of your languages yet.</p>
+  <% else %>
+    <ul>
+    <% current_user.languages.each do |language| %>
+    <li><%= language.name %></li>
+    <% end %>
+    </ul>
+    <%= link_to "Delete languages", edit_language_path %>
+  <% end %>
+  <%= link_to "Add language", new_language_path %>
+</div>
