@@ -1,0 +1,24 @@
+<div class="main">
+  <% if !associated_user.profile_img.empty? %>
+    <img src=<%= associated_user.profile_img %> width="125" height="125">
+  <% else %>
+    <img src='/images/no-photo.png' width="125" height="125">
+  <% end %>
+
+  <h1><%= associated_user.first_name %></h1>
+  <h3><%= associated_user.username %></h3>
+  <h3><%= associated_user.location %></h3>
+
+  <br>
+
+  <h3><%= associated_user.first_name %>'s programming languages</h3>
+  <% if associated_user.languages.empty? %>
+    <p><%= associated_user.first_name %> has not added any programming languages yet.</p>
+  <% else %>
+    <ul>
+      <% associated_user.languages.each do |language| %>
+      <li><%= language.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
