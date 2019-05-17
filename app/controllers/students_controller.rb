@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_action :current_user, only: [:show, :update, :edit]
+
   def new
     @student = Student.new
   end
@@ -7,7 +9,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
-      return head(:forbidden) unless @student.authenticate(params[:student][:password])
+      render 'new' unless @student.authenticate(params[:student][:password])
       session[:student_id] = @student.id
       redirect_to student_path(@student)
     else
@@ -15,32 +17,26 @@ class StudentsController < ApplicationController
     end
   end
 
-  def show
-    @student = Student.find_by_id(session[:student_id])
-  end
-
   def update
-    @student = Student.find_by_id(session[:student_id])
-    @student.update(student_params)
+    @current_user.update(student_params)
 
-    redirect_to student_path(@student)
+    redirect_to student_path(@current_user)
   end
 
   def add_mentor
     @mentor = Mentor.find_by_id(params[:mentor_id])
-    @student = Student.find_by_id(session[:student_id])
+    @current_user.mentor = @mentor
 
-    @student.mentor = @mentor
-
-    redirect_to mentor_path(@student.mentor)
-  end
-
-  def show_mentor
+    redirect_to mentor_path(@current_user.mentor)
   end
 
   private
 
   def student_params
     params.require(:student).permit(:username, :first_name, :last_name, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
+  end
+
+  def current_user
+    @current_user = Student.find_by_id(session[:student_id])
   end
 end
