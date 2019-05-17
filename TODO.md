@@ -52,12 +52,11 @@
 #-Refactor profile displays into partial
 #-Continue to refactor with partials
 #-Render error messages on sign up
+#-Organize display of resources by language and then by subfield
 
 -Set up authorization (diff than authentication)
-
 
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes
--Organize display of resources by language and then by subfield
 -Make it so that at each page you automatically get @mentor or @student
