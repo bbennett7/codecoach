@@ -1,9 +1,9 @@
 <%= form_for user, url: path do |f| %>
   <p><%= f.label :username, "username" %>
-  <%= f.text_field :username %></p>
+  <%= f.text_field :username %></p><br>
 
   <p><%= f.label :password, "password" %>
-  <%= f.password_field :password %></p>
+  <%= f.password_field :password %></p><br><br>
 
-  <%= f.submit "log in" %>
+  <%= f.submit "log in" %><br>
 <% end %>

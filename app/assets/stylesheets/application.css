@@ -89,6 +89,10 @@ input[type=submit], input[type=radio] {
   border-radius: 5px;
 }
 
+.form {
+  align: left;
+}
+
 select {
   background-color: rgb(219, 221, 224);
   color: rgb(4, 56, 39);
@@ -107,6 +111,14 @@ select {
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: center
+}
+
+.access_section label, .access_section input[type=text], .access_section input[type=password], {
+  text-align: right;
+  float: left;
+  padding-left: 100px;
+  padding-right: 10px;
+  width: 140px;
 }
 
 .access_section hr {
@@ -137,4 +149,8 @@ select {
   padding: 30px;
   float: left;
   display: inline-block;
+}
+
+.field_with_errors  {
+  color: red;
 }

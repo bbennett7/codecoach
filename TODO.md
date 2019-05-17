@@ -49,13 +49,14 @@
 #-Style submit buttons
 #-Style dropdown menus
 #-Style student submit read and rating
+#-Refactor profile displays into partial
+#-Continue to refactor with partials
 
 -Set up authorization (diff than authentication)
--Continue to refactor with partials
+
 -Render error messages on sign up
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes
 -Organize display of resources by language and then by subfield
--Refactor profile displays into partial
 -Make it so that at each page you automatically get @mentor or @student

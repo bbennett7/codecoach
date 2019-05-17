@@ -15,7 +15,7 @@ class MentorsController < ApplicationController
       session[:mentor_id] = @mentor.id
       redirect_to mentor_path(@mentor)
     else
-      redirect_to new_mentor_path
+      render 'new'
     end
   end
 
