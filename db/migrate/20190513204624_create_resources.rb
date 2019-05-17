@@ -4,9 +4,9 @@ class CreateResources < ActiveRecord::Migration[5.2]
       t.string :website
       t.string :title
       t.string :url
-      t.string :language_id
-      t.string :subfield_id
-      t.string :mentor_id
+      t.integer :language_id
+      t.integer :subfield_id
+      t.integer :mentor_id
       t.boolean :read, default: false
 
       t.timestamps

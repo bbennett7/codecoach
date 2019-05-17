@@ -2,7 +2,11 @@
   <h1> find a mentor </h1>
 
   <% @available_mentors.each do |mentor| %>
-    <img src="<%= mentor.profile_img %>", alt="<%= mentor.username %>'s profile picture" width="100"/><br>
+    <% if !mentor.profile_img.empty? %>
+      <img src="<%= mentor.profile_img %>", alt="<%= mentor.username %>'s profile picture" width="100" height="100">
+    <% else %>
+      <img src='/images/no-photo.png' width="100" height="100">
+    <% end %><br>
     <%= mentor.first_name %> <%= mentor.last_name %><br>
     <%= mentor.location %><br>
     <% mentor.languages.each do |language| %>
@@ -11,7 +15,7 @@
 
     <%= form_tag(add_mentor_path) do %>
       <%= hidden_field_tag :mentor_id, mentor.id %>
-      <%= submit_tag "Be my mentor" %>
+      <%= submit_tag "be my mentor" %>
     <% end %>
     <br><br>
   <% end %>

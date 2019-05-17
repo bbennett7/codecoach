@@ -4,6 +4,7 @@ class Mentor < ApplicationRecord
   has_many :languages_mentors
   has_many :languages, through: :languages_mentors
   has_many :resources
+  has_many :subfields, through: :resources
   belongs_to :student, required: false
 
 

@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_235613) do
     t.string "website"
     t.string "title"
     t.string "url"
-    t.string "language_id"
-    t.string "subfield_id"
-    t.string "mentor_id"
+    t.integer "language_id"
+    t.integer "subfield_id"
+    t.integer "mentor_id"
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

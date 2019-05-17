@@ -29,7 +29,6 @@ class ResourcesController < ApplicationController
 
   def top_resources
     @top_resources = Resource.top_resources
-    @top_resources.compact!
   end
 
   def show
