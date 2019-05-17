@@ -1,6 +1,9 @@
 <div class="main">
   <h1><%= @resource.website %> - <%= @resource.title %></h1>
-  <h2><%= @resource.subfield.name %></h2>
+  <h2><%= @resource.language.name %></h2>
+  <% if @resource.subfield %>
+    <h2><%= @resource.subfield.name %></h2>
+  <% end %>
 
   <br><hr><br>
 

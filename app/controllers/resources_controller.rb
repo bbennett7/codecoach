@@ -1,5 +1,8 @@
 class ResourcesController < ApplicationController
   def index
+    @mentor = Mentor.find_by_id(params[:mentor_id])
+
+    @resources = @mentor.resources.sort_by{|resource| resource.language }
   end
 
   def new
@@ -21,7 +24,7 @@ class ResourcesController < ApplicationController
       redirect_to mentor_resource_path(@resource.mentor, @resource)
     else
       render 'new'
-    end 
+    end
   end
 
   def top_resources

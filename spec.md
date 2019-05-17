@@ -18,7 +18,7 @@ Specs:
 
 [x] Include nested resource show or index (URL e.g. users/2/recipes) // mentor/:id/resources and mentor/:id/resources/:resource_id
 [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) // mentor/:id/resources/new
-[] Include form display of validation errors (form URL e.g. /recipes/new) -- SHOULD BE ON ALL FORMS
+[x] Include form display of validation errors (form URL e.g. /recipes/new) // new mentor and new student
 
 Confirm:
 [] The application is pretty DRY

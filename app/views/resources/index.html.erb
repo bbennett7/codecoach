@@ -2,14 +2,16 @@
 
   <h1>my resources</h1>
 
-  <ul>
+  <% @resources.each_with_index do |resource, i| %>
+    <% if @resources.first == resource || resource.language != @resources[i-1].language %>
+      <h3><%= resource.language.name %></h3>
+    <% end %>
 
-  <% current_user.resources.each do |resource| %>
-    <li>
-      <%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%>
-    </li>
+    <% if resource.subfield.nil? %>
+      <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+    <% else %>
+      <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+    <% end %>
   <% end %>
-  
-  </ul>
 
 </div>
