@@ -1,5 +1,8 @@
 class MentorsController < ApplicationController
   before_action :current_user, only: [:show, :edit, :update]
+  before_action :logged_in?, except: [:new, :create]
+  before_action :student_logged_in?, only: [:index]
+  before_action :mentor_logged_in?, except: [:index, :new, :create]
 
   def index
     @available_mentors = Mentor.all.collect{|mentor| mentor if mentor.student.nil?}

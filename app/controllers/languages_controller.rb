@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :current_user, only: [:create, :destroy]
+  before_action :logged_in?
 
   def new_or_destroy
     @language = Language.new
