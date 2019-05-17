@@ -17,9 +17,11 @@ class ResourcesController < ApplicationController
 
     @resource = Resource.new(resource_params)
 
-    @resource.save
-
-    redirect_to mentor_resource_path(@resource.mentor, @resource)
+    if @resource.save
+      redirect_to mentor_resource_path(@resource.mentor, @resource)
+    else
+      render 'new'
+    end 
   end
 
   def top_resources
@@ -46,7 +48,7 @@ class ResourcesController < ApplicationController
       @mentor = Mentor.find_by_id(session[:mentor_id])
       @resource = Resource.find_by_id(params[:id])
       @resource.update(resource_params)
-      
+
       redirect_to mentor_resources_path(@mentor)
     end
   end

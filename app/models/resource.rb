@@ -1,12 +1,12 @@
 class Resource < ApplicationRecord
   belongs_to :mentor
   belongs_to :language
-  belongs_to :subfield, required: false 
+  belongs_to :subfield, required: false
 
-  validates :website, presence: { message: 'Website cannot be blank.' }
-  validates :title, presence: { message: 'Title cannot be blank.' }
-  validates :url, presence: { message: 'URL cannot be blank.' }
-  validates :language_id, presence: { message: 'Language cannot be blank.' }
+  validates :website, presence: { message: 'cannot be blank.' }
+  validates :title, presence: { message: 'cannot be blank.' }
+  validates :url, presence: { message: 'cannot be blank.' }
+  validates :language_id, presence: { message: 'cannot be blank.' }
   validates :student_rating, numericality: { less_than_or_equal_to: 10 }, :if => :student_rating
 
   def self.top_resources

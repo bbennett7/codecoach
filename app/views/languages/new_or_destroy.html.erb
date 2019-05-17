@@ -3,6 +3,18 @@
 
   <h3>choose a language from the dropdown menu, or add a new language:</h3>
 
+  <% if !@language.errors.empty? %>
+    <div class="error_display">
+      <ul>
+        <% @language.errors.full_messages.each do |error_msg| %>
+          <li><%= error_msg %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <br>
+  <% end %>
+
   <%= form_for @language do |f| %>
     <%= f.label :id, "select a language" %>
     <%= f.collection_select :id, Language.all, :id, :name, :include_blank => true %><br><br>

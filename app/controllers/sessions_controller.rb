@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   def mentor_new
-    @mentor = Mentor.new
+    @user = Mentor.new
   end
 
   def student_new
-    @student = Student.new
+    @user = Student.new
   end
 
   def mentor_create
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
       session[:student_id] = @user.id
       redirect_to student_path(@user)
     else
-      redirect_to student_login_path
+      redirect_to student_login_path 
     end
   end
 

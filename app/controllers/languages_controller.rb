@@ -4,19 +4,30 @@ class LanguagesController < ApplicationController
   end
 
   def create
-    if !language_params[:name].empty?
-      @language = Language.find_or_create_by(name: language_params[:name])
+
+    if params[:language][:name].empty? && params[:language][:id].empty?
+      @language = Language.new(language_params)
+       
+      render 'new_or_destroy'
     else
-      @language = Language.find_by_id(params[:language][:id])
-    end
+      if !language_params[:name].empty?
+        @language = Language.find_or_create_by(name: language_params[:name])
+      else
+        @language = Language.find_by_id(params[:language][:id])
+      end
 
-    @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
-    @user.languages << @language
+      if @language.nil?
+        redirect_to new_or_delete_language_path
+      else
+        @user = Mentor.find_by_id(session[:mentor_id]) || Student.find_by_id(session[:student_id])
+        @user.languages << @language
 
-    if session[:mentor_id]
-      redirect_to mentor_path(@user)
-    elsif session[:student_id]
-      redirect_to student_path(@user)
+        if session[:mentor_id]
+          redirect_to mentor_path(@user)
+        elsif session[:student_id]
+          redirect_to student_path(@user)
+        end
+      end
     end
   end
 

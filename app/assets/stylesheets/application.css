@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit] {
   font-weight: 400;
 }
 
-p {
+p, label {
   font-family: 'PT Serif', serif;
   font-weight: 400;
 }
@@ -113,7 +113,7 @@ select {
   text-align: center
 }
 
-.access_section label, .access_section input[type=text], .access_section input[type=password], {
+.access_section label, .access_section input[type=text], .access_section input[type=password] {
   text-align: right;
   float: left;
   padding-left: 100px;
@@ -151,6 +151,25 @@ select {
   display: inline-block;
 }
 
-.field_with_errors  {
-  color: red;
+.field_with_errors {
+  display: inline-block;
+  float: left;
+}
+
+.field_with_errors input, .field_with_errors select, .error_display {
+  border: solid rgb(193, 75, 75) 2px;
+}
+
+.error_display {
+  font-size: .8em;
+  color: rgb(193, 75, 75);
+  text-align: left;
+  color: rgb(193, 75, 75);
+  background-color: rgb(193, 75, 75, 0.15);
+}
+
+.access_section .error_display {
+  width: 400px;
+  display: inherit;
+  margin: auto;
 }
