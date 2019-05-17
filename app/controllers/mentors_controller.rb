@@ -15,7 +15,7 @@ class MentorsController < ApplicationController
     if @mentor.save
       render 'new' unless @mentor.authenticate(params[:mentor][:password])
       session[:mentor_id] = @mentor.id
-      
+
       redirect_to mentor_path(@mentor)
     else
       render 'new'
@@ -32,9 +32,4 @@ class MentorsController < ApplicationController
   def mentor_params
     params.require(:mentor).permit(:username, :first_name, :last_name, :email, :profile_img, :location, :github_link, :student_id, :password, :password_confirmation)
   end
-
-  def current_user
-    @current_user = Mentor.find_by_id(session[:mentor_id])
-  end
-
 end

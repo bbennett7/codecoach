@@ -35,8 +35,4 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:username, :first_name, :last_name, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
   end
-
-  def current_user
-    @current_user = Student.find_by_id(session[:student_id])
-  end
 end
