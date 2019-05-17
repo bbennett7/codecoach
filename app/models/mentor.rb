@@ -21,4 +21,5 @@ class Mentor < ApplicationRecord
   validates :github_link, uniqueness: { message: 'is associated with an existing account.' }
   validates :password, presence: { message: 'cannot be blank.' }, :if => :password
   validates :password, length: {minimum: 8, message: 'must be at least 8 characters.' }, :if => :password
+
 end
