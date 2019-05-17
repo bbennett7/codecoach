@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :current_user, only: [:show, :update, :edit]
+  before_action :find_mentor, only: [:add_mentor]
 
   def new
     @student = Student.new
@@ -19,14 +20,11 @@ class StudentsController < ApplicationController
 
   def update
     @current_user.update(student_params)
-
     redirect_to student_path(@current_user)
   end
 
   def add_mentor
-    @mentor = Mentor.find_by_id(params[:mentor_id])
     @current_user.mentor = @mentor
-
     redirect_to mentor_path(@current_user.mentor)
   end
 

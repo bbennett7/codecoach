@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
       session[:student_id] = @user.id
       redirect_to student_path(@user)
     else
-      redirect_to student_login_path 
+      redirect_to student_login_path
     end
   end
 
