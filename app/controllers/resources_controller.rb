@@ -1,12 +1,9 @@
 class ResourcesController < ApplicationController
-  def index
-    if session[:mentor_id]
-      @user = Mentor.find_by_id(params[:mentor_id])
-    elsif session[:student_id]
-      @user = Student.find_by_id(params[:student_id])
-    end 
+  before_action :current_user, only:[:index, :update, :create]
+  before_action :resource, only:[:show, :edit, :update]
 
-    @resources = @user.resources.sort_by{|resource| resource.language }
+  def index
+    @resources = @current_user.resources.sort_by{|resource| resource.language }
   end
 
   def new
@@ -25,7 +22,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
 
     if @resource.save
-      redirect_to mentor_resource_path(@resource.mentor, @resource)
+      redirect_to mentor_resource_path(@current_user, @resource)
     else
       render 'new'
     end
@@ -35,33 +32,19 @@ class ResourcesController < ApplicationController
     @top_resources = Resource.top_resources
   end
 
-  def show
-    @resource = Resource.find_by_id(params[:id])
-  end
-
-  def edit
-    @resource = Resource.find_by_id(params[:id])
-  end
-
   def update
-    if session[:student_id]
-      @student = Student.find_by_id(session[:student_id])
-      @resource = Resource.find_by_id(params[:id])
-      @resource.update(resource_params)
+    @resource.update(resource_params)
 
-      redirect_to mentor_resources_path(@student.mentor)
-    elsif session[:mentor_id]
-      @mentor = Mentor.find_by_id(session[:mentor_id])
-      @resource = Resource.find_by_id(params[:id])
-      @resource.update(resource_params)
-
-      redirect_to mentor_resources_path(@mentor)
-    end
+    redirect_to student_or_mentor_resources_path(@current_user)
   end
 
   private
 
   def resource_params
     params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :mentor_id, :read, :student_rating)
+  end
+
+  def resource
+    @resource = Resource.find_by_id(params[:id])
   end
 end

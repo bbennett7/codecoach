@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :current_user, only: [:create, :destroy]
-  
+
   def new_or_destroy
     @language = Language.new
   end
@@ -19,17 +19,13 @@ class LanguagesController < ApplicationController
       end
 
       if @language.nil?
-        redirect_to new_or_delete_language_path
+        render 'new_or_destroy'
       else
         @current_user.languages << @language
 
-      student_or_mentor_path(@current_user)
+        student_or_mentor_path(@current_user)
       end
     end
-  end
-
-  def edit
-    @language = Language.new
   end
 
   def destroy

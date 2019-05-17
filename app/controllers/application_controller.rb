@@ -7,9 +7,17 @@ class ApplicationController < ActionController::Base
 
   def student_or_mentor_path(user)
     if session[:mentor_id]
-      redirect_to mentor_path(user)
+      mentor_path(user)
     elsif session[:student_id]
-      redirect_to student_path(user)
+      student_path(user)
+    end
+  end
+
+  def student_or_mentor_resources_path(user)
+    if session[:mentor_id]
+      mentor_resource_path(user)
+    elsif session[:student_id]
+      student_resource_path(user)
     end
   end
 
