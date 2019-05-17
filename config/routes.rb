@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    resources :resources, only: [:index, :show, :update]
+    resources :resources, only: [:index, :show]
   end
 
   root to: 'application#index'

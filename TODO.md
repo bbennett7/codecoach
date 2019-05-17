@@ -53,6 +53,7 @@
 #-Continue to refactor with partials
 #-Render error messages on sign up
 #-Organize display of resources by language and then by subfield
+#-Make sure validation messages don't repeat 
 
 -Set up authorization (diff than authentication)
 
@@ -60,7 +61,6 @@
 -Add before actions - don't call find in controllers
   - before_action method_name, only: [:show, :edit]
 
--Make sure validation messages don't repeat 
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes

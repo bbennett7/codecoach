@@ -1,8 +1,12 @@
 class ResourcesController < ApplicationController
   def index
-    @mentor = Mentor.find_by_id(params[:mentor_id])
+    if session[:mentor_id]
+      @user = Mentor.find_by_id(params[:mentor_id])
+    elsif session[:student_id]
+      @user = Student.find_by_id(params[:student_id])
+    end 
 
-    @resources = @mentor.resources.sort_by{|resource| resource.language }
+    @resources = @user.resources.sort_by{|resource| resource.language }
   end
 
   def new

@@ -6,5 +6,5 @@ class Language < ApplicationRecord
   has_many :resources
   has_many :subfields
 
-  validates :name, presence: { message: 'Name cannot be blank.' }
+  validates :name, presence: { message: 'cannot be blank.' }
 end

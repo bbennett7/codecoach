@@ -41,7 +41,7 @@
         <h4><%= link_to "home", student_path(current_user) %></h4>
         <h4><%= link_to "edit profile", edit_student_path(current_user) %></h4>
         <% if current_user.mentor %>
-          <h4><%= link_to "my resources", mentor_resources_path(current_user.mentor) %></h4>
+          <h4><%= link_to "my resources", student_resources_path(current_user) %></h4>
         <% end %>
         <h4><%= link_to "top resources", top_resources_path %></h4>
         <% if current_user.mentor.nil? %>

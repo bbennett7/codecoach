@@ -8,9 +8,17 @@
     <% end %>
 
     <% if resource.subfield.nil? %>
-      <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+      <% if session[:mentor_id] %>
+        <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+      <% elsif session[:student_id] %>
+        <li><%= link_to "#{resource.website} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+      <% end %>
     <% else %>
-      <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+      <% if session[:mentor_id] %>
+        <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+      <% elsif session[:student_id] %>
+        <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+      <% end %>
     <% end %>
   <% end %>
 

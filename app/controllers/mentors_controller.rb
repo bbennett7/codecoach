@@ -1,4 +1,6 @@
 class MentorsController < ApplicationController
+  before_action current_user, only: [:show, :edit]
+
   def index
     @available_mentors = Mentor.all.collect{|mentor| mentor if mentor.student.nil?}
   end
@@ -27,10 +29,9 @@ class MentorsController < ApplicationController
   end
 
   def update
-    @mentor = Mentor.find_by_id(session[:mentor_id])
-    @mentor.update(mentor_params)
+    @current_user.update(mentor_params)
 
-    redirect_to mentor_path(@mentor)
+    redirect_to mentor_path(@current_user)
   end
 
   def show_student
@@ -40,5 +41,9 @@ class MentorsController < ApplicationController
 
   def mentor_params
     params.require(:mentor).permit(:username, :first_name, :last_name, :email, :profile_img, :location, :github_link, :student_id, :password, :password_confirmation)
+  end
+
+  def cuurent_user
+    @current_user = Mentor.find_by_id(session[:mentor_id])
   end
 end
