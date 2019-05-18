@@ -34,6 +34,9 @@ class ResourcesController < ApplicationController
     @top_resources = Resource.top_resources
   end
 
+  def edit
+  end
+
   def update
     @resource.update(resource_params)
 

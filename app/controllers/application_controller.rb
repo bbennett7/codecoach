@@ -48,5 +48,4 @@ class ApplicationController < ActionController::Base
   def find_mentor
     @mentor = Mentor.find_by_id(params[:mentor_id])
   end
-
 end
