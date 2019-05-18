@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       session[:mentor_id] = @user.id
       redirect_to mentor_path(@user)
     else
-      redirect_to mentor_login_path
+      redirect_to mentors_login_path
     end
   end
 
@@ -41,7 +41,8 @@ class SessionsController < ApplicationController
       session[:student_id] = @user.id
       redirect_to student_path(@user)
     else
-      redirect_to student_login_path
+
+      redirect_to students_login_path
     end
   end
 

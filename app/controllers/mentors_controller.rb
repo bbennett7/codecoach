@@ -6,7 +6,7 @@ class MentorsController < ApplicationController
   before_action :mentor_logged_in?, except: [:index, :new, :create]
 
   def index
-    @available_mentors = Mentor.all.collect{|mentor| mentor if mentor.student.nil?}
+    @available_mentors = Mentor.all.collect{|mentor| mentor if !mentor.has_student?}
   end
 
   def new

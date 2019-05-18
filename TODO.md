@@ -61,9 +61,10 @@
 #  - before_action method_name, only: [:show, :edit]
 #-Refactor nav into parial
 
+#-Delete unused routes
+#-Take logic out of view and controller
+
 -Refactor with helper methods
--Take logic out of view and controller
--Delete unused routes
 
 
 
