@@ -34,7 +34,6 @@ gem 'dotenv-rails'
 gem 'valid_email'
 gem 'dynamic_form', '~> 1.1', '>= 1.1.4'
 
-gem 'webpacker'
 
 
 # Use ActiveStorage variant
