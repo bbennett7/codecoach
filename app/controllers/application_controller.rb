@@ -31,9 +31,17 @@ class ApplicationController < ActionController::Base
 
   def student_or_mentor_resources_path(user)
     if session[:mentor_id]
-      mentor_resource_path(user)
+      mentor_resources_path(user)
     elsif session[:student_id]
-      student_resource_path(user)
+      student_resources_path(user)
+    end
+  end
+
+  def student_or_mentor_resource_path(user, resource)
+    if session[:mentor_id]
+      mentor_resource_path(user, resource)
+    elsif session[:student_id]
+      student_resource_path(user, resource)
     end
   end
 

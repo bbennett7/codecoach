@@ -2,24 +2,28 @@
 
   <h1>my resources</h1>
 
-  <% @resources.each_with_index do |resource, i| %>
-    <% if @resources.first == resource || resource.language != @resources[i-1].language %>
-      <h3><%= resource.language.name %></h3>
-    <% end %>
-
-    <% if resource.subfield.nil? %>
-      <% if session[:mentor_id] %>
-        <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
-      <% elsif session[:student_id] %>
-        <li><%= link_to "#{resource.website} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+  <% if @resources.empty? %>
+    <p>you have not added any resources yet</p>
+    <%= link_to "add resource", new_mentor_resource_path(current_user) %>
+  <% else %>
+    <% @resources.each_with_index do |resource, i| %>
+      <% if @resources.first == resource || resource.language != @resources[i-1].language %>
+        <h3><%= resource.language.name %></h3>
       <% end %>
-    <% else %>
-      <% if session[:mentor_id] %>
-        <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
-      <% elsif session[:student_id] %>
-        <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+
+      <% if resource.subfield.nil? %>
+        <% if session[:mentor_id] %>
+          <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+        <% elsif session[:student_id] %>
+          <li><%= link_to "#{resource.website} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+        <% end %>
+      <% else %>
+        <% if session[:mentor_id] %>
+          <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
+        <% elsif session[:student_id] %>
+          <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", student_resource_path(current_user, resource)%></li>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-
 </div>

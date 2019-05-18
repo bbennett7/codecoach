@@ -54,14 +54,12 @@
 #-Render error messages on sign up
 #-Organize display of resources by language and then by subfield
 #-Make sure validation messages don't repeat
-
 #-Set up authorization
 
--Create current_user private method
--Add before actions - don't call find in controllers
-  - before_action method_name, only: [:show, :edit]
+#-Create current_user private method
+#-Add before actions - don't call find in controllers
+#  - before_action method_name, only: [:show, :edit]
 
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes
--Make it so that at each page you automatically get @mentor or @student

@@ -1,0 +1,10 @@
+<div class="recent_resources_col">
+  <h3>recently added resources</h3>
+  <% if mentor.resources.empty? %>
+    <p><%= no_resources_message %></p>
+  <% else %>
+    <% mentor.resources.last(5).each do |resource| %>
+    <p><%= link_to "#{resource.website} - #{resource.title}", student_or_mentor_resource_path(current_user, resource) %></p>
+    <% end %>
+  <% end %>
+</div>
