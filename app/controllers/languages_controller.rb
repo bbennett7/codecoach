@@ -17,13 +17,13 @@ class LanguagesController < ApplicationController
       else
         @language = Language.find_by_id(params[:language][:id])
       end
-
       if @language.nil?
+
         render 'new_or_destroy'
       else
-        @current_user.languages << @language
+        @current_user.languages << @language if !@current_user.languages.include?(@language)
 
-        student_or_mentor_path(@current_user)
+        redirect_to student_or_mentor_path(@current_user)
       end
     end
   end
@@ -37,7 +37,7 @@ class LanguagesController < ApplicationController
       @current_user.languages.destroy(language)
     end
 
-    student_or_mentor_path(@current_user)
+    redirect_to student_or_mentor_path(@current_user)
   end
 
   private
