@@ -9,7 +9,7 @@ Specs:
 
 [x] Include at least one many-to-many relationship // languages to mentors
 
-[x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity) // Resource (join table between subfields and mentors) has website, title, url 
+[x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity) // Resource (join table between subfields and mentors) has website, title, url
 
 [x] Include reasonable validations for simple model objects // Language, mentor, resource, student and subfield all have validations
 
@@ -27,5 +27,5 @@ Specs:
 Confirm:
 [] The application is pretty DRY
 [x] Limited logic in controllers
-[] Views use helper methods if appropriate
+[x] Views use helper methods if appropriate
 [x] Views use partials if appropriate

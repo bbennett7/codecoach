@@ -11,7 +11,7 @@
 
   <h3>your programming languages</h3>
   <% if current_user.languages.empty? %>
-    <p>You have not added any of your languages yet.</p>
+    <p>you have not added any of your languages yet</p>
     <%= link_to "add language", new_or_delete_language_path %>
   <% else %>
     <ul>

@@ -21,47 +21,35 @@
       <a href="/"><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(151, 156, 163)">mentor</span></a>
     </header>
 
-    <% if session_id && session[:mentor_id] %>
 
+    <% if session_id %>
       <nav>
-        <h4><%= link_to "home", mentor_path(current_user) %></h4>
-        <h4><%= link_to "edit profile", edit_mentor_path(current_user) %></h4>
-        <h4><%= link_to "my resources", mentor_resources_path(current_user) %></h4>
-        <h4><%= link_to "add resource", new_mentor_resource_path(current_user) %></h4>
-        <h4><%= link_to "top resources", top_resources_path %></h4>
-        <% if !current_user.student.nil? %>
-          <h4><%= link_to "my student", mentor_student_path(current_user) %></h4>
+        <%= render partial: 'application/nav' %>
+
+        <% if session[:mentor_id] %>
+          <h4><%= link_to "add resource", new_mentor_resource_path(current_user) %></h4>
+          <% if current_user.has_student? %>
+            <h4><%= link_to "my student", mentor_student_path(current_user) %></h4>
+          <% end %>
+
+        <% elsif session[:student_id] %>
+          <% if current_user.has_mentor? %>
+            <h4><%= link_to "my mentor", student_mentor_path(current_user) %></h4>
+          <% else %>
+            <h4><%= link_to "find a mentor", mentors_path %></h4>
+          <% end %>
         <% end %>
+
         <h4><%= link_to "log out", logout_path %></h4>
+
       </nav>
-
-    <% elsif session_id && session[:student_id] %>
-
-      <nav>
-        <h4><%= link_to "home", student_path(current_user) %></h4>
-        <h4><%= link_to "edit profile", edit_student_path(current_user) %></h4>
-        <% if current_user.mentor %>
-          <h4><%= link_to "my resources", student_resources_path(current_user) %></h4>
-        <% end %>
-        <h4><%= link_to "top resources", top_resources_path %></h4>
-        <% if current_user.mentor.nil? %>
-          <h4><%= link_to "find a mentor", mentors_path %></h4>
-        <% else %>
-          <h4><%= link_to "my mentor", student_mentor_path(current_user) %></h4>
-        <% end %>
-        <h4><%= link_to "log out", logout_path %></h4>
-      </nav>
-
     <% end %>
 
     <%= yield %>
 
     <% if session_id && session[:mentor_id] %>
-
       <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
-
     <% elsif session_id && session[:student_id] %>
-
       <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
     <% end %>
 

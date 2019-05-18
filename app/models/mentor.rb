@@ -22,4 +22,7 @@ class Mentor < ApplicationRecord
   validates :password, presence: { message: 'cannot be blank.' }, :if => :password
   validates :password, length: {minimum: 8, message: 'must be at least 8 characters.' }, :if => :password
 
+  def has_student?
+    self.student != nil
+  end
 end

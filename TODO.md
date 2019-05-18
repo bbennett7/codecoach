@@ -63,3 +63,4 @@
 -Refactor with helper methods
 -Take logic out of view and controller
 -Delete unused routes
+-Refactor nav into parial 
