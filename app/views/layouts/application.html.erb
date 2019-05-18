@@ -49,7 +49,7 @@
 
     <% if session_id && session[:mentor_id] %>
       <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
-    <% elsif session_id && session[:student_id] %>
+    <% elsif session_id && session[:student_id] && current_user.has_mentor? %>
       <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
     <% end %>
 
