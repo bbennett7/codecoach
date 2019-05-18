@@ -6,13 +6,15 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    unless !session[:mentor_id].nil? || !session[:student_id].nil?
-      redirect_to root_path
-    end
+    redirect_to root_path unless !session[:mentor_id].nil? || !session[:student_id].nil?
+  end
+
+  def logged_out?
+    redirect_to student_or_mentor_path(@current_user) unless session[:mentor_id].nil? && session[:student_id].nil?
   end
 
   def mentor_logged_in?
-    redirect_to student_path(@current_user) unless !session[:mentor_id].nil?
+    redirect_to student_path(@current_user) unless session[:mentor_id]
   end
 
   def student_logged_in?

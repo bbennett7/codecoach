@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
-  before_action :current_user, only: [:show, :update, :edit]
+  before_action :current_user
+  before_action :logged_in?, except: [:new, :create]
+  before_action :logged_out?, only: [:new]
   before_action :find_mentor, only: [:add_mentor]
 
   def new

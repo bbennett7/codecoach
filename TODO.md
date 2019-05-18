@@ -53,9 +53,9 @@
 #-Continue to refactor with partials
 #-Render error messages on sign up
 #-Organize display of resources by language and then by subfield
-#-Make sure validation messages don't repeat 
+#-Make sure validation messages don't repeat
 
--Set up authorization (diff than authentication)
+#-Set up authorization
 
 -Create current_user private method
 -Add before actions - don't call find in controllers

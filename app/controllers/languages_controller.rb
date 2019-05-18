@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  before_action :current_user, only: [:create, :destroy]
+  before_action :current_user
   before_action :logged_in?
 
   def new_or_destroy
@@ -7,7 +7,6 @@ class LanguagesController < ApplicationController
   end
 
   def create
-
     if params[:language][:name].empty? && params[:language][:id].empty?
       @language = Language.new(language_params)
 

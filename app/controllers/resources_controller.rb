@@ -1,13 +1,15 @@
 class ResourcesController < ApplicationController
-  before_action :current_user, only:[:index, :update, :create]
+  before_action :current_user
   before_action :resource, only:[:show, :edit, :update]
-
-  def index
-    @resources = @current_user.resources.sort_by{|resource| resource.language }
-  end
+  before_action :logged_in?
+  before_action :mentor_logged_in?, only: [:new, :create, :edit]
 
   def new
     @resource = Resource.new
+  end
+
+  def index
+    @resources = @current_user.resources.sort_by{|resource| resource.language }
   end
 
   def create

@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :current_user
+  before_action :logged_out?, only: [:mentor_new, :student_new]
+
   def mentor_new
     @user = Mentor.new
   end
