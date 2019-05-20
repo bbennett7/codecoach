@@ -1,5 +1,5 @@
 <div class="main">
-  <h1> find a mentor </h1>
+  <h1> find a coach </h1>
 
   <% @available_mentors.each do |mentor| %>
     <% if !mentor.profile_img.empty? %>
@@ -15,7 +15,7 @@
 
     <%= form_tag(add_mentor_path) do %>
       <%= hidden_field_tag :mentor_id, mentor.id %>
-      <%= submit_tag "be my mentor" %>
+      <%= submit_tag "be my coach" %>
     <% end %>
     <br><br>
   <% end %>

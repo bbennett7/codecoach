@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Code Mentor</title>
+    <title>code coach</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <style>
@@ -18,7 +18,7 @@
   <body>
 
     <header>
-      <a href="/"><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(151, 156, 163)">mentor</span></a>
+      <a href="/"><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(151, 156, 163)">coach</span></a>
     </header>
 
 
@@ -34,9 +34,9 @@
 
         <% elsif session[:student_id] %>
           <% if current_user.has_mentor? %>
-            <h4><%= link_to "my mentor", student_mentor_path(current_user) %></h4>
+            <h4><%= link_to "my coach", student_mentor_path(current_user) %></h4>
           <% else %>
-            <h4><%= link_to "find a mentor", mentors_path %></h4>
+            <h4><%= link_to "find a coach", mentors_path %></h4>
           <% end %>
         <% end %>
 
