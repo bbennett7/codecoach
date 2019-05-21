@@ -23,13 +23,13 @@ body {
 
 header {
   width: 100%;
-  height: 130px;
+  height: 125px;
   background-color: rgb(4, 56, 39);
   font-weight: 200;
   font-family: 'Raleway', sans-serif;
   color: rgb(101, 104, 102);
-  font-size: 6em;
-  padding-top: 15px;
+  font-size: 5.25em;
+  padding-top: 20px;
 }
 
 nav {

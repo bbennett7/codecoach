@@ -7,6 +7,7 @@ class MentorsController < ApplicationController
 
   def index
     @available_mentors = Mentor.all.collect{|mentor| mentor if !mentor.has_student?}
+    @available_mentors.compact!
   end
 
   def new

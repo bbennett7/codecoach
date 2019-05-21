@@ -2,10 +2,11 @@
   <h1> find a coach </h1>
 
   <% @available_mentors.each do |mentor| %>
-    <% if !mentor.profile_img.empty? %>
-      <img src="<%= mentor.profile_img %>", alt="<%= mentor.username %>'s profile picture" width="100" height="100">
-    <% else %>
+
+    <% if mentor.profile_img.empty? %>
       <img src='/images/no-photo.png' width="100" height="100">
+    <% else %>
+      <img src="<%= mentor.profile_img %>", alt="<%= mentor.username %>'s profile picture" width="100" height="100">
     <% end %><br>
     <%= mentor.first_name %> <%= mentor.last_name %><br>
     <%= mentor.location %><br>

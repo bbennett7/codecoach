@@ -17,7 +17,7 @@ class Student < ApplicationRecord
   validates :email, uniqueness: { message: 'is associated with an existing account.' }
   validates :email, email: { message: 'is not a valid email address.' }
 #  validates :github_link, presence: { message: 'Github link cannot be blank.' }
-  validates :github_link, uniqueness: { message: 'is associated with an existing account.' }
+  validates :github_link, uniqueness: { message: 'is associated with an existing account.' }, :allow_blank => true 
   validates :password, presence: { message: 'cannot be blank.' }, :if => :password
   validates :password, length: {minimum: 8, message: 'must be at least 8 characters.' }, :if => :password
 
