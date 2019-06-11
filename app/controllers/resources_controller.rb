@@ -9,7 +9,9 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    @resources = @current_user.resources.sort_by{|resource| resource.language }
+    @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+
+    @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
   end
 
   def create

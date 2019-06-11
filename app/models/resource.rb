@@ -10,8 +10,11 @@ class Resource < ApplicationRecord
   validates :subfield, presence: { message: 'cannot be blank.' }
   validates :student_rating, numericality: { less_than_or_equal_to: 10 }, :if => :student_rating
 
-  def self.top_resources
-    where(student_rating: 10)
-  end
+
+  scope :top_resources, -> {where(student_rating: 10)}
+  
+  # def self.top_resources
+  #   where(student_rating: 10)
+  # end
 
 end
