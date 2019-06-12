@@ -12,13 +12,6 @@ class ResourcesController < ApplicationController
     @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
 
     @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
-
-    @user_resources = @read_resources + @unread_resources
-
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @user_resources.to_json }
-    end
   end
 
   def create
@@ -45,19 +38,22 @@ class ResourcesController < ApplicationController
       format.html { render :show }
       format.json { render json: @resource.to_json }
     end
-
-    @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
-
-    @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
-
-    @user_resources = @read_resources + @unread_resources
   end
 
   def top_resources
     @top_resources = Resource.top_resources
+
+    respond_to do |format|
+      format.html { render :top_resources }
+      format.json { render json: @top_resources.to_json }
+    end
   end
 
   def top_resource
+    respond_to do |format|
+      format.html { render :top_resource }
+      format.json { render json: @resource.to_json }
+    end
   end
 
   def edit

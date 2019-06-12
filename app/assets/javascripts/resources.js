@@ -5,7 +5,6 @@
 
 function nextResource() {
   const id = parseInt(event.target.dataset.id);
-  const userInfo = event.target.dataset.userPath;
   const userIndexUrl = `http://localhost:3000${userInfo}/resources.json`;
 
   let userIndexJson;

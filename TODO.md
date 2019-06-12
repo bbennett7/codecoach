@@ -1,13 +1,7 @@
--Refactor resource model into JS class with prototype
--Build JS class method to concatenate site name and title for index page
--Refactor resources index page to use JS and serialization
--Refactor user profile page to user JS and serialization
--Make sure to include a JS has-many relationship between users and languages on profile
--Allow coach to add a new resource and append it to the index page without refreshing 
-
-
-
-
+-Make resource show appear underneath resource list on index so long as it's serialized
+-Resources class prototype
+-User has many languages and has array of languages belonging to user
+-New resource appends to recently added resources section
 
 
 
