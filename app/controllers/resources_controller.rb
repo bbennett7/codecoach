@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :current_user
-  before_action :resource, only:[:show, :edit, :update]
+  before_action :resource, only:[:show, :edit, :update, :top_resource]
   before_action :logged_in?
   before_action :mentor_logged_in?, only: [:new, :create, :edit]
 
@@ -12,6 +12,13 @@ class ResourcesController < ApplicationController
     @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
 
     @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
+
+    @user_resources = @read_resources + @unread_resources
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @user_resources.to_json }
+    end
   end
 
   def create
@@ -38,10 +45,20 @@ class ResourcesController < ApplicationController
       format.html { render :show }
       format.json { render json: @resource.to_json }
     end
+
+    @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+
+    @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
+
+    @user_resources = @read_resources + @unread_resources
   end
 
   def top_resources
     @top_resources = Resource.top_resources
+  end
+
+  def top_resource
+    render :show 
   end
 
   def edit

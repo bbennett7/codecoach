@@ -7,7 +7,7 @@
     <ul>
     <% @top_resources.each do |resource| %>
       <li>
-        <%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%>
+        <%= link_to "#{resource.website} - #{resource.title}", top_resource_path(resource)%>
       </li>
     <% end %>
     </ul>
