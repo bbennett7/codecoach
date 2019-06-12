@@ -34,7 +34,10 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
-    render json: @resource.to_json
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @resource.to_json }
+    end
   end
 
   def top_resources

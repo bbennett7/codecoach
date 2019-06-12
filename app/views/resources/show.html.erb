@@ -10,6 +10,7 @@
   <h3><%= link_to "visit resource", @resource.url %></h3>
 
   <% if session[:mentor_id] %>
+
     <h3><%= link_to "edit resource", edit_mentor_resource_path(current_user, @resource) %></h3>
   <% end %>
 
@@ -32,4 +33,5 @@
     <% end %>
 
   <% end %>
+  <h3><a href="#" onclick="nextResource()">next resource</h3>
 </div>
