@@ -30,6 +30,8 @@ gem 'omniauth', '~> 1.9'
 gem 'omniauth-google-oauth2', '~> 0.6.1'
 gem 'omniauth-github', '~> 1.3'
 gem 'dotenv-rails'
+gem 'active_model_serializers'
+gem 'jquery-rails'
 
 gem 'valid_email'
 gem 'dynamic_form', '~> 1.1', '>= 1.1.4'
