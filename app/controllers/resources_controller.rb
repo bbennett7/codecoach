@@ -58,7 +58,6 @@ class ResourcesController < ApplicationController
   end
 
   def top_resource
-    render :show 
   end
 
   def edit
