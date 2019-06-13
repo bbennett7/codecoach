@@ -26,7 +26,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
 
     if @resource.save
-      redirect_to mentor_resource_path(@current_user, @resource)
+      render json: @resource, status: 201
     else
       render 'new'
     end

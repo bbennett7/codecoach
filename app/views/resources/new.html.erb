@@ -5,3 +5,28 @@
 <%= render partial: 'form', locals: {resource: @resource, submit_text: "add resource"} %>
 
 </div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('#new_resource').submit(function(event) {
+      event.preventDefault();
+
+      var userId = "<%= current_user.id %>"
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/mentors/${userId}/resources', values);
+
+      posting.done(function(data) {
+        var resource = data;
+        var resourcePath = `http://localhost:3000/mentors/${userId}/resources/${data.id}`
+        var newestResourceDiv = document.getElementById('newestResource')
+
+        newestResourceDiv.innerHTML = `<p><a href="${resourcePath}">${resource["website"]} - ${resource["title"]}</p>`;
+
+      });
+    });
+  });
+</script>
