@@ -50,7 +50,7 @@
       .then( json => resourceDiv.innerHTML = resourceInfo(json))
 
     function resourceInfo(json) {
-      return `<li><a href=${json.url}>visit resource on ${json.website}</a></li><li><a href=${resourcesUrl}>more options</a></li>`
+      return `<li><a href=${json.url} target="_blank">visit resource on ${json.website}</a></li><li><a href=${resourcesUrl}>more options</a></li>`
     }
   }
 </script>
