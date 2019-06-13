@@ -18,7 +18,7 @@
  */
 
 body {
-  background-color: rgb(234, 241, 248);
+  background-color: rgb(204, 217, 229);
 }
 
 header {
@@ -89,6 +89,10 @@ input[type=submit], input[type=radio] {
   border-radius: 5px;
 }
 
+hr {
+  border: solid .5px rgb(4, 56, 39);
+}
+
 .form {
   align: left;
 }
@@ -100,7 +104,9 @@ select {
 }
 
 .main img {
-  border: solid 3px rgb(4, 56, 39)
+  border: solid 2px rgb(4, 56, 39);
+  padding: 10px;
+
 }
 
 .access_section {
@@ -126,6 +132,7 @@ select {
 }
 
 .main {
+  border: solid 1px rgb(4, 56, 39);
   width: auto;
   min-width: 45%;
   max-width: 50%;
@@ -140,6 +147,7 @@ select {
 }
 
 .recent_resources_col {
+  border: solid 1px rgb(4, 56, 39);
   width: 25%;
   height: auto;
   min-height: 400px;
