@@ -3,9 +3,12 @@
   <h1>my resources</h1>
   <br><hr><br>
 
-  <% if @read_resources.empty? && @unread_resources.empty? %>
+  <% if @read_resources.empty? && @unread_resources.empty? && !!session[:mentor_id] %>
     <p>you have not added any resources yet</p>
     <%= link_to "add resource", new_mentor_resource_path(current_user) %>
+  <% elsif @read_resources.empty? && @unread_resources.empty? && !!session[:student_id] %>
+    <p>your mentor has not added any resources yet</p>
+  <%= link_to "browse top resources", top_resources_path %>
   <% else %>
     <% if !@unread_resources.empty? %>
       <h2>unread resources</h2>
