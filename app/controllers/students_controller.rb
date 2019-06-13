@@ -20,6 +20,13 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @current_user.to_json( only: [:username, :first_name, :email, :profile_img, :location, :github_link], include: [languages: {only: :name}] ) }
+    end
+  end
+
   def update
     @current_user.update(student_params)
     redirect_to student_path(@current_user)

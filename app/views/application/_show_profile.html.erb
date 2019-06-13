@@ -14,11 +14,22 @@
     <p>you have not added any of your languages yet</p>
     <%= link_to "add language", new_or_delete_language_path %>
   <% else %>
-    <ul>
-    <% current_user.languages.each do |language| %>
-    <li><%= language.name %></li>
-    <% end %>
-    </ul>
+    <div id="languages"></div>
     <%= link_to "add or delete languages", new_or_delete_language_path %>
   <% end %>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+  var currentUserUrl = 'http://localhost:3000<%= student_or_mentor_path(current_user) %>'
+  var languagesDiv = document.getElementById("languages");
+
+  fetch(currentUserUrl)
+    .then( response => response.json())
+    .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
+
+  function listOfLanguages(languages) {
+    const languagesList = languages.map(language => `<li>${language.name}</li>`)
+    return `<ul>${languagesList.join("")}</ul>`
+  }
+</script>

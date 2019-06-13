@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require_tree .
 
-//= require resources 
+//= require resources
+//= require mentors 

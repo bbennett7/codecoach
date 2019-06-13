@@ -27,6 +27,13 @@ class MentorsController < ApplicationController
     end
   end
 
+  def show
+    respond_to do |format|
+      format.json { render json: @current_user.to_json( only: [:username, :first_name, :email, :profile_img, :location, :github_link], include: [languages: {only: :name}] ) }
+      format.html { render :show }
+    end
+  end
+
   def update
     @current_user.update(mentor_params)
     redirect_to mentor_path(@current_user)
