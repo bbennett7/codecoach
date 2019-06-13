@@ -9,24 +9,46 @@
     <% if !@unread_resources.empty? %>
       <h3>Unread Resources</h3>
       <% @unread_resources.each_with_index do |resource, i| %>
+
         <% if @unread_resources.first == resource || resource.language != @unread_resources[i-1].language %>
           <h3><%= resource.language.name %></h3>
         <% end %>
 
-        <% if resource.subfield.nil? %>
-          <% if session[:mentor_id] %>
-            <li><%= link_to "#{resource.website} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
-          <% elsif session[:student_id] %>
-            <li><%= link_to "#{resource.website} - #{resource.title}", student_resource_path(current_user, resource)%></li>
-          <% end %>
-        <% else %>
-          <% if session[:mentor_id] %>
-            <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", mentor_resource_path(current_user, resource)%></li>
-          <% elsif session[:student_id] %>
-            <li><%= link_to "#{resource.website} - #{resource.subfield.name} - #{resource.title}", student_resource_path(current_user, resource)%></li>
-          <% end %>
-        <% end %>
+        <li> <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= student_or_mentor_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
+        <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div></li>
+
       <% end %>
     <% end %>
   <% end %>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+  function resourceInfo() {
+    const resourceId = parseInt(event.target.dataset.resourceId);
+    const userInfo = event.target.dataset.userInfo;
+    const resourceDiv = document.getElementById("resource-" + resourceId)
+
+    const resourcesUrl = `http://localhost:3000${userInfo}/resources/${resourceId}`
+
+    fetch(resourcesUrl)
+      .then( response => response.json())
+      .then( json => resourceDiv.innerHTML = resourceInfo(json))
+
+    function resourceInfo(json) {
+      return `<li><a href=${json.url}>visit resource on ${json.website}</a></li><li><a href=${resourcesUrl}>more options</a></li>`
+    }
+
+
+      // var languagesDiv = document.getElementById("languages");
+      //
+      // fetch(currentUserUrl)
+      //   .then( response => response.json())
+      //   .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
+      //
+      // function listOfLanguages(languages) {
+      //   const languagesList = languages.map(language => `<li>${language.name}</li>`)
+      //   return `<ul>${languagesList.join("")}</ul>`
+      // }
+  }
+</script>
