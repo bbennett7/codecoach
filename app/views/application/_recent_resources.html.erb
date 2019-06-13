@@ -2,7 +2,8 @@
   <h3>recently added resources</h3>
   <hr>
   <% if mentor.resources.empty? %>
-    <p><%= no_resources_message %></p>
+    <div id="newestResource"></div>
+    <p id="noResourceMessage"><%= no_resources_message %></p>
   <% else %>
     <div id="newestResource"></div>
     <% mentor.resources.last(5).reverse.each do |resource| %>

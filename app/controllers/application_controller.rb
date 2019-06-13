@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_action :current_user
+  before_action :logged_out?, only: :index
+
   private
 
   def current_user

@@ -50,7 +50,6 @@ class ResourcesController < ApplicationController
   end
 
   def top_resource
-    @new_resource = Resource.new
     respond_to do |format|
       format.html { render :top_resource }
       format.json { render json: @resource.to_json }
