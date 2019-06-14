@@ -34,7 +34,6 @@ $(function() {
     var posting = $.post('/mentors/' + userId + '/resources', values);
 
     posting.done(function(data) {
-
       var resource = data;
       var resourcePath = `http://localhost:3000/mentors/` + userId + `/resources/` + resource.id;
 
