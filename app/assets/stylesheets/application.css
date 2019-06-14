@@ -89,6 +89,16 @@ input[type=submit], input[type=radio] {
   border-radius: 5px;
 }
 
+.new_resource input[type=text], .edit_resource input[type=text] {
+  width: 40%;
+  width-min: 20%;
+
+}
+
+.new_resource select, .edit_resource select {
+  width: 25%;
+}
+
 hr {
   border: solid .5px rgb(4, 56, 39);
 }

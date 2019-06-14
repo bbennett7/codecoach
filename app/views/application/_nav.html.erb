@@ -1,4 +1,4 @@
-  <h4><%= link_to "home", student_or_mentor_path(current_user) %></h4>
+  <h4 id="home"><%= link_to "home", student_or_mentor_path(current_user) %></h4>
   <h4><%= link_to "edit profile", edit_student_or_mentor_path(current_user) %></h4>
   <% if session[:mentor_id] || current_user.has_mentor? %>
     <h4><%= link_to "my resources", student_or_mentor_resources_path(current_user) %></h4>

@@ -20,15 +20,4 @@
 </div>
 
 
-<script type="text/javascript" charset="utf-8">
-  var currentUserUrl = 'http://localhost:3000<%= student_or_mentor_path(current_user) %>'
-  var languagesDiv = document.getElementById("languages");
-  fetch(currentUserUrl)
-    .then( response => response.json())
-    .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
-
-  function listOfLanguages(languages) {
-    const languagesList = languages.map(language => `<li>${language.name}</li>`)
-    return `<ul>${languagesList.join("")}</ul>`
-  }
-</script>
+<script type="application/json" src="languages.js"></script>
