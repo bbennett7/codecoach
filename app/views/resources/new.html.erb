@@ -7,7 +7,7 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  
+
   class Resource{
     constructor(website, title, url, languageId, subfieldId, mentorId, read, studentRating) {
       this.website = website;
@@ -31,15 +31,20 @@ $(function() {
 
     var values = $(this).serialize();
 
-    var posting = $.post('/mentors/${userId}/resources', values);
+    var posting = $.post('/mentors/' + userId + '/resources', values);
 
     posting.done(function(data) {
+
       var resource = data;
-      var resourcePath = `http://localhost:3000/mentors` + userId + `/resources/` + data.id;
+      var resourcePath = `http://localhost:3000/mentors/` + userId + `/resources/` + resource.id;
+
+      let newResource = new Resource(data.website, data.title, data.url, data.language_id, data.subfield_id, data.mentor_id, data.read, data.student_rating)
+
       var newestResourceDiv = document.getElementById('newestResource')
       var noResourceMessage = document.getElementById('noResourceMessage')
 
-      newestResourceDiv.innerHTML = `<p><a href="${resourcePath}">${resource["website"]} - ${resource["title"]}</p>`;
+      newestResourceDiv.innerHTML = `<p><a href="${resourcePath}">${newResource.websiteTitle()}</a></p>`;
+
       noResourceMessage.innerHTML = ""
     });
   });
