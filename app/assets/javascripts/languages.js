@@ -6,14 +6,22 @@ $(document).ready(function(){
 
 
   $('#home').click(function(event) {
-    alert("sup")
+    // alert("sup")
+    event.preventDefault()
     let currentUrl = document.location.href
+    currentUrl += ".json"
 
     var languagesDiv = document.getElementById("languages");
 
-    fetch(currentUrl)
-      .then( response => response.json())
-      .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
+    // fetch(currentUrl)
+    //   .then( response => console.log(response.json()))
+    //   .then( json => languagesDiv.innerHTML = listOfLanguages(json.languages) )
+
+    $.get(currentUrl, function (data) {
+      console.log(data)
+      languagesDiv.append(listOfLanguages(data.languages))
+      debugger
+    })
 
     function listOfLanguages(languages) {
       const languagesList = languages.map(language => `<li>${language.name}</li>`)
