@@ -10,14 +10,29 @@
   <br>
 
   <h3>your programming languages</h3>
+    <div id="languages" data-user-url="<%= student_or_mentor_path(current_user) %>"></div>
   <% if current_user.languages.empty? %>
     <p>you have not added any of your languages yet</p>
     <%= link_to "add language", new_or_delete_language_path %>
   <% else %>
-    <div id="languages"></div>
     <%= link_to "add or delete languages", new_or_delete_language_path %>
   <% end %>
 </div>
 
 
-<script type="application/json" src="languages.js"></script>
+<script type="text/javascript" charset="utf-8">
+  var currentUserUrl = 'http://localhost:3000<%= student_or_mentor_path(current_user) %>'
+  
+  var languagesDiv = document.getElementById("languages");
+  fetch(currentUserUrl)
+    .then( response => response.json())
+    .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
+  function listOfLanguages(languages) {
+    const languagesList = languages.map(language => `<li>${language.name}</li>`)
+    return `<ul>${languagesList.join("")}</ul>`
+  }
+</script>
+
+
+
+<!-- <script type="application/json" src="languages.js"></script> -->
