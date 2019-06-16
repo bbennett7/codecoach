@@ -120,6 +120,7 @@ select {
 }
 
 .access_section {
+  border: solid 1px rgb(4, 56, 39);
   width: 50%;
   min-height: 400px;
   background-color: white;
