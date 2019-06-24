@@ -4,12 +4,34 @@
   <% if @top_resources.empty? %>
     <p>there are no resources with a rating of 10</p>
   <% else %>
-    <ul>
-    <% @top_resources.each do |resource| %>
-      <li>
-        <%= link_to "#{resource.website} - #{resource.title}", top_resource_path(resource)%>
-      </li>
-    <% end %>
-    </ul>
+    <div id="resources"></div>
   <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  let resourcesDiv = document.getElementById("resources")
+
+  fetch('http://localhost:3000/resources/top_resources')
+    .then( response => response.json())
+    .then( response => resourcesDiv.innerHTML = makeResourceLinks(response) )
+
+  function compare(a, b) {
+    if (a.title < b.title) {
+      return -1
+    } else if (a.title > b.title) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+
+  function makeResourceLinks(resources) {
+    let sortedResources = resources.sort(compare)
+
+    let resourceLinks = sortedResources.map(function(resource){
+      return `<li><a href="top_resources/${resource.id}"> ${resource.website} - ${resource.title} </a></li>`
+    })
+
+    return `<ul>${resourceLinks.join("")}</ul>`
+  }
+</script>

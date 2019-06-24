@@ -44,8 +44,8 @@ class ResourcesController < ApplicationController
     @top_resources = Resource.top_resources
 
     respond_to do |format|
-      format.html { render :top_resources }
       format.json { render json: @top_resources.to_json }
+      format.html { render :top_resources }
     end
   end
 

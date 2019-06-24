@@ -22,7 +22,8 @@ class StudentsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render json: @current_user.to_json( only: [:username, :first_name, :email, :profile_img, :location, :github_link], include: [languages: {only: :name}] ) }
+      format.json { render json: @current_user }
+
       format.html { render :show }
     end
   end
