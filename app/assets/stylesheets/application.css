@@ -184,7 +184,7 @@ select {
   color: rgb(193, 75, 75);
   text-align: left;
   color: rgb(193, 75, 75);
-  background-color: rgb(193, 75, 75, 0.15);
+  background-color: rgba(193, 75, 75, 0.15);
 }
 
 .access_section .error_display {
