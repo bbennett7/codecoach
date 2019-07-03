@@ -138,6 +138,11 @@ select {
   width: 140px;
 }
 
+.access_section input[type=radio] {
+  text-align: left;
+  float: left;
+}
+
 .access_section hr {
   width: 80%;
 }
