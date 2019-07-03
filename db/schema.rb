@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_183407) do
     t.string "username"
     t.string "first_name"
     t.string "last_name"
-    t.string "type"
+    t.string "user_type"
     t.string "email"
     t.string "profile_img"
     t.string "location"

@@ -15,10 +15,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      render 'new' unless @user.authenticate(params[:password])
+    if @user.save && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-
       redirect_to user_path(@user)
     else
       render 'new'
@@ -45,6 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name, :type, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
+    params.require(:user).permit(:username, :first_name, :last_name, :user_type, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
   end
 end
