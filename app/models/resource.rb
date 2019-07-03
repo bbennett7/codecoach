@@ -1,5 +1,5 @@
 class Resource < ApplicationRecord
-  belongs_to :mentor
+  belongs_to :user
   belongs_to :language
   belongs_to :subfield
 
@@ -12,7 +12,7 @@ class Resource < ApplicationRecord
 
 
   scope :top_resources, -> {where(student_rating: 10)}
-  
+
   # def self.top_resources
   #   where(student_rating: 10)
   # end

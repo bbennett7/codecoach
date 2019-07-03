@@ -25,20 +25,6 @@
   <nav>
     <%= render partial: 'application/nav' %>
 
-    <% if session[:mentor_id] %>
-      <h4><%= link_to "add resource", new_mentor_resource_path(current_user) %></h4>
-      <% if current_user.has_student? %>
-        <h4><%= link_to "my student", mentor_student_path(current_user) %></h4>
-      <% end %>
-
-    <% elsif session[:student_id] %>
-      <% if current_user.has_mentor? %>
-        <h4><%= link_to "my coach", student_mentor_path(current_user) %></h4>
-      <% else %>
-        <h4><%= link_to "find a coach", mentors_path %></h4>
-      <% end %>
-    <% end %>
-
     <h4><%= link_to "log out", logout_path %></h4>
 
   </nav>
@@ -46,9 +32,9 @@
 
 <%= yield %>
 
-<% if session_id && session[:mentor_id] %>
+<% if session_id && current_user.is_coach? %>
   <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
-<% elsif session_id && session[:student_id] && current_user.has_mentor? %>
+<% elsif session_id && current_user.is_student? %>
   <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
 <% end %>
 
