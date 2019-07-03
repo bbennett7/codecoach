@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :current_user
+  before_action :current_user
   # before_action :logged_in?, except: [:new, :create]
   # before_action :current_user_is_student?, only: [:index]
   #
@@ -29,12 +29,12 @@ class UsersController < ApplicationController
       format.html { render :show }
     end
   end
-  #
-  # def update
-  #   @current_user.update(user_params)
-  #   redirect_to user_path(@current_user)
-  # end
-  #
+
+  def update
+    @current_user.update(user_params)
+    redirect_to user_path(@current_user)
+  end
+
   # def create_connection
   #   # @current_user.mentor = @mentor
   #   # redirect_to mentor_path(@current_user.mentor)
@@ -44,5 +44,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :first_name, :last_name, :user_type, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
+  end
+
+  def current_user
+    @current_user = User.find_by_id(session[:user_id])
   end
 end
