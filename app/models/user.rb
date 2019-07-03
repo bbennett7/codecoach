@@ -1,11 +1,11 @@
 require 'valid_email'
 
-class Mentor < ApplicationRecord
-  has_many :languages_mentors
-  has_many :languages, through: :languages_mentors
+class User < ApplicationRecord
+  has_many :languages_users
+  has_many :languages, through: :languages_users
   has_many :resources
   has_many :subfields, through: :resources
-  belongs_to :student, required: false
+  # belongs_to :student, required: false
 
 
   has_secure_password
@@ -22,7 +22,7 @@ class Mentor < ApplicationRecord
   validates :password, presence: { message: 'cannot be blank.' }, :if => :password
   validates :password, length: {minimum: 8, message: 'must be at least 8 characters.' }, :if => :password
 
-  def has_student?
-    self.student != nil
-  end
+  # def has_student?
+  #   self.student != nil
+  # end
 end

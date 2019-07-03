@@ -11,6 +11,10 @@
 <% end %>
 
 <%= form_for user do |f|%>
+  <%= f.label :type %>
+  <%= f.radio_button :type, "coach" %>
+  <%= f.radio_button :type, "coach" %>
+
   <%= f.label :first_name, "first name" %>
   <%= f.text_field :first_name %><br><br>
 
