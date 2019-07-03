@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # 
+  #
   #
   # def index
   #   logged_out?
@@ -18,15 +18,8 @@ class ApplicationController < ActionController::Base
   # def logged_out?
   #   true if logged_in? == false
   # end
-  #
-  # def is_coach?
-  #   true if @current_user.type == "coach"
-  # end
-  #
-  # def is_student?
-  #   true if @current_user.type == "student"
-  # end
-  #
+
+  
   # # def student_or_mentor_path(user)
   # #   if session[:mentor_id]
   # #     mentor_path(user)
