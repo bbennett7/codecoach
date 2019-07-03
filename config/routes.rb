@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   root to: 'application#index'
 
-  get '/mentors/login', to: 'sessions#mentor_new'
-  get '/students/login', to: 'sessions#student_new'
-  post '/mentor_login', to: 'sessions#mentor_create'
-  post '/student_login', to: 'sessions#student_create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
+
+  resources :users
 
   resources :languages, only: [:create]
   get '/languages/add_or_delete', to: 'languages#new_or_destroy', as: 'new_or_delete_language'
   post '/delete_language', to: 'languages#destroy'
 
-  resources :mentors do
+  resources :users do
     resources :resources
   end
   get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'

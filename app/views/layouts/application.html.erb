@@ -9,7 +9,7 @@
       @import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700');
     </style>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="google-signin-client_id" content="ENV['GOOGLE_CLIENT_ID'].apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -21,41 +21,41 @@
       <div id="logo"><a href="/""><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(204, 217, 229); font-weight: bold;">coach</span></a></div>
     </header>
 
+<% if session_id %>
+  <nav>
+    <%= render partial: 'application/nav' %>
 
-    <% if session_id %>
-      <nav>
-        <%= render partial: 'application/nav' %>
+    <% if session[:mentor_id] %>
+      <h4><%= link_to "add resource", new_mentor_resource_path(current_user) %></h4>
+      <% if current_user.has_student? %>
+        <h4><%= link_to "my student", mentor_student_path(current_user) %></h4>
+      <% end %>
 
-        <% if session[:mentor_id] %>
-          <h4><%= link_to "add resource", new_mentor_resource_path(current_user) %></h4>
-          <% if current_user.has_student? %>
-            <h4><%= link_to "my student", mentor_student_path(current_user) %></h4>
-          <% end %>
-
-        <% elsif session[:student_id] %>
-          <% if current_user.has_mentor? %>
-            <h4><%= link_to "my coach", student_mentor_path(current_user) %></h4>
-          <% else %>
-            <h4><%= link_to "find a coach", mentors_path %></h4>
-          <% end %>
-        <% end %>
-
-        <h4><%= link_to "log out", logout_path %></h4>
-
-      </nav>
+    <% elsif session[:student_id] %>
+      <% if current_user.has_mentor? %>
+        <h4><%= link_to "my coach", student_mentor_path(current_user) %></h4>
+      <% else %>
+        <h4><%= link_to "find a coach", mentors_path %></h4>
+      <% end %>
     <% end %>
 
-    <%= yield %>
+    <h4><%= link_to "log out", logout_path %></h4>
 
-    <% if session_id && session[:mentor_id] %>
-      <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
-    <% elsif session_id && session[:student_id] && current_user.has_mentor? %>
-      <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
-    <% end %>
+  </nav>
+<% end %>
+
+<%= yield %>
+
+<% if session_id && session[:mentor_id] %>
+  <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
+<% elsif session_id && session[:student_id] && current_user.has_mentor? %>
+  <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
+<% end %>
 
   </body>
 
   <footer>
+
   </footer>
 </html>
 

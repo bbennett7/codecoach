@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_235613) do
+ActiveRecord::Schema.define(version: 2019_07_03_183407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: :cascade do |t|
+    t.integer "coach_user_id"
+    t.integer "student_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
@@ -21,31 +28,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_235613) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages_mentors", force: :cascade do |t|
+  create_table "languages_users", force: :cascade do |t|
     t.integer "language_id"
-    t.integer "mentor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "languages_students", force: :cascade do |t|
-    t.integer "language_id"
-    t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "mentors", force: :cascade do |t|
-    t.string "username"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "profile_img"
-    t.string "location"
-    t.string "github_link"
-    t.string "uid"
-    t.integer "student_id"
-    t.string "password_digest"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,23 +41,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_235613) do
     t.string "url"
     t.integer "language_id"
     t.integer "subfield_id"
-    t.integer "mentor_id"
+    t.integer "user_id"
     t.boolean "read", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "student_rating"
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string "username"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "profile_img"
-    t.string "location"
-    t.string "github_link"
-    t.string "uid"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +51,22 @@ ActiveRecord::Schema.define(version: 2019_05_15_235613) do
   create_table "subfields", force: :cascade do |t|
     t.string "name"
     t.integer "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "type"
+    t.string "email"
+    t.string "profile_img"
+    t.string "location"
+    t.string "github_link"
+    t.string "uid"
+    t.integer "connection_id"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

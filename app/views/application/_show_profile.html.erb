@@ -10,7 +10,7 @@
   <br>
 
   <h3>your programming languages</h3>
-    <div id="languages" data-user-url="<%= student_or_mentor_path(current_user) %>"></div>
+    <div id="languages" data-user-url="<%= user_path(current_user) %>"></div>
   <% if current_user.languages.empty? %>
     <p>you have not added any of your languages yet</p>
     <%= link_to "add language", new_or_delete_language_path %>
@@ -21,7 +21,7 @@
 
 
 <script type="text/javascript" charset="utf-8">
-  var currentUserUrl = 'http://localhost:3000<%= student_or_mentor_path(current_user) %>'
+  var currentUserUrl = 'http://localhost:3000<%= user_path(current_user) %>'
 
   var languagesDiv = document.getElementById("languages");
 

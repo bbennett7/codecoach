@@ -6,8 +6,9 @@ class CreateResources < ActiveRecord::Migration[5.2]
       t.string :url
       t.integer :language_id
       t.integer :subfield_id
-      t.integer :mentor_id
+      t.integer :user_id
       t.boolean :read, default: false
+      t.integer :student_rating
 
       t.timestamps
     end
