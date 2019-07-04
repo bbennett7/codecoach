@@ -2,5 +2,7 @@
   <h4><%= link_to "edit profile", edit_user_path(current_user) %></h4>
   <% if current_user_is_student? %>
     <h4><%= link_to "my resources", user_resources_path(current_user) %></h4>
+  <% elsif current_user_is_coach? %>
+    <h4><%= link_to "add resource", new_user_resource_path(current_user) %></h4>
   <% end %>
   <h4><%= link_to "top resources", top_resources_path %></h4>

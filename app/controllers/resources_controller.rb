@@ -3,34 +3,34 @@ class ResourcesController < ApplicationController
   # before_action :resource, only:[:show, :edit, :update, :top_resource]
   # before_action :logged_in?
   #
-  # def new
-  #   @resource = Resource.new
-  # end
+  def new
+    @resource = Resource.new
+  end
   #
   # def index
   #   @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
   #
   #   @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
   # end
-  #
-  # def create
-  #   if !params[:resource][:subfield][:name].empty?
-  #     subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name].strip)
-  #     subfield.language_id = params[:resource][:language_id]
-  #     subfield.save
-  #
-  #     params[:resource][:subfield_id] = subfield.id
-  #   end
-  #
-  #   @resource = Resource.new(resource_params)
-  #
-  #   if @resource.save
-  #     render json: @resource, status: 201
-  #   else
-  #     render 'new'
-  #   end
-  # end
-  #
+
+  def create
+    if !params[:resource][:subfield][:name].empty?
+      subfield = Subfield.find_or_create_by(name: params[:resource][:subfield][:name].strip)
+      subfield.language_id = params[:resource][:language_id]
+      subfield.save
+
+      params[:resource][:subfield_id] = subfield.id
+    end
+
+    @resource = Resource.new(resource_params)
+
+    if @resource.save
+      render json: @resource, status: 201
+    else
+      render 'new'
+    end
+  end
+
   # def show
   #   @resource = Resource.find(params[:id])
   #   respond_to do |format|

@@ -1,4 +1,4 @@
-<%# <% if !resource.errors.empty? %>
+<% if !resource.errors.empty? %>
   <div class="error_display">
     <ul>
       <% resource.errors.full_messages.each do |error_msg| %>
@@ -32,7 +32,7 @@
     <%= subfields_field.text_field :name %>
   <% end %><br><br>
 
-  <%= f.hidden_field :mentor_id, value: current_user.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <%= f.submit submit_text %>
-<% end %> %>
+<% end %>
