@@ -15,11 +15,9 @@ Rails.application.routes.draw do
     resources :resources
   end
 
-  get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'
+  get '/find_a_coach', to: 'users#index'
 
-
-  get '/student/:id/mentor', to: 'students#show_mentor', as: 'student_mentor'
-  post '/add_mentor', to: 'students#add_mentor'
+  resources :connections, only: [:create]
 
   resources :resources, only: [:index, :create, :update]
   get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'

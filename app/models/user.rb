@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :languages, through: :languages_users
   has_many :resources
   has_many :subfields, through: :resources
-  # belongs_to :student, required: false
+  belongs_to :connection, required: false
 
 
   has_secure_password

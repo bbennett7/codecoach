@@ -16,10 +16,12 @@ ActiveRecord::Schema.define(version: 2019_07_03_183407) do
   enable_extension "plpgsql"
 
   create_table "connections", force: :cascade do |t|
-    t.integer "coach_user_id"
-    t.integer "student_user_id"
+    t.bigint "coach_id"
+    t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_connections_on_coach_id", unique: true
+    t.index ["student_id"], name: "index_connections_on_student_id", unique: true
   end
 
   create_table "languages", force: :cascade do |t|
@@ -71,4 +73,6 @@ ActiveRecord::Schema.define(version: 2019_07_03_183407) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "connections", "users", column: "coach_id"
+  add_foreign_key "connections", "users", column: "student_id"
 end

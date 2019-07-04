@@ -1,22 +1,23 @@
 <div class="main">
   <h1> find a coach </h1>
 
-  <% @available_mentors.each do |mentor| %>
+  <% @available_coaches.each do |coach| %>
 
-    <% if mentor.profile_img.empty? %>
+    <% if coach.profile_img.empty? %>
       <img src='/images/no-photo.png' width="100" height="100">
     <% else %>
-      <img src="<%= mentor.profile_img %>", alt="<%= mentor.username %>'s profile picture" width="100" height="100">
+      <img src="<%= coach.profile_img %>", alt="<%= coach.username %>'s profile picture" width="100" height="100">
     <% end %><br>
-    <%= mentor.first_name %> <%= mentor.last_name %><br>
-    <%= mentor.location %><br>
-    <% mentor.languages.each do |language| %>
+    <%= coach.first_name %> <%= coach.last_name %><br>
+    <%= coach.location %><br>
+    <% coach.languages.each do |language| %>
       <%= language.name %><br>
     <% end %>
 
-    <%= form_tag(add_mentor_path) do %>
-      <%= hidden_field_tag :mentor_id, mentor.id %>
-      <%= submit_tag "be my coach" %>
+    <%= form_for @connection do |f| %>
+      <%= f.hidden_field :coach_user_id, value: coach.id %>
+      <%= f.hidden_field :student_user_id, value: current_user.id %>
+      <%= f.submit "be my coach" %>
     <% end %>
     <br><br>
   <% end %>

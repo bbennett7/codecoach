@@ -3,11 +3,13 @@ class UsersController < ApplicationController
   # before_action :logged_in?, except: [:new, :create]
   # before_action :current_user_is_student?, only: [:index]
   #
-  # def index
-  #   # @available_mentors = Mentor.all.collect{|mentor| mentor if !mentor.has_student?}
-  #   # @available_mentors.compact!
-  # end
-  #
+  def index
+    @available_coaches = User.all.collect{|user| user if user.connection_id.nil? && user.user_type == "coach"}
+    @available_coaches.compact!
+
+    @connection = Connection.new 
+  end
+
   def new
     @user = User.new
   end
@@ -36,11 +38,6 @@ class UsersController < ApplicationController
     @current_user.update(user_params)
     redirect_to user_path(@current_user)
   end
-
-  # def create_connection
-  #   # @current_user.mentor = @mentor
-  #   # redirect_to mentor_path(@current_user.mentor)
-  # end
 
   private
 
