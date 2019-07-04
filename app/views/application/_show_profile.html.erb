@@ -1,9 +1,5 @@
 <div class="main">
-  <% if !current_user.profile_img.empty? %>
-    <img src=<%= current_user.profile_img %> width="125" height="125">
-  <% else %>
-    <img src='/images/no-photo.png' width="125" height="125">
-  <% end %>
+  <img src=<%= current_user.profile_img %> width="125" height="125">
   <h1><%= current_user.username %></h1>
   <h3><%= current_user.location %></h3>
 

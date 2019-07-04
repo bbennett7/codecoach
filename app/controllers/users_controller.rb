@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    @user.profile_img = "/images/no-photo.png" if @user.profile_img.empty?
+
     if @user.save && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)

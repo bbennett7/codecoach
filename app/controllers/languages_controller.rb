@@ -24,9 +24,9 @@ class LanguagesController < ApplicationController
     end
 
   end
-  
+
   def destroy
-    @languages = params[:language][:id]
+    @languages = language_params[:id]
     @languages.delete("")
 
     @languages.each do |lang_id|

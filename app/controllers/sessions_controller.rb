@@ -30,12 +30,12 @@ class SessionsController < ApplicationController
   #   session[:mentor_id] = @user.id
   #   redirect_to mentor_path(@user)
   # end
-  #
-  # def logout
-  #   reset_session
-  #   redirect_to root_path
-  # end
-  #
+
+  def logout
+    reset_session
+    redirect_to root_path
+  end
+
   # private
   #
   # def auth
