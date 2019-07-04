@@ -8,14 +8,9 @@
   <br><hr><br>
 
   <h3><%= link_to "visit resource", @resource.url, target: :_blank  %></h3>
+  <h3><%= link_to "edit resource", edit_user_resource_path(current_user, @resource) %></h3>
 
-  <% if session[:user_id] %>
-
-    <h3><%= link_to "edit resource", edit_mentor_resource_path(current_user, @resource) %></h3>
-  <% end %>
-
-  <% if session[:student_id] %>
-
+  <% if current_user_is_student? %>
     <br><hr><br>
 
     <h3>have you read this resource?</h3>

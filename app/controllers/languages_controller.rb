@@ -5,7 +5,7 @@ class LanguagesController < ApplicationController
   def new_or_destroy
     @language = Language.new
   end
-  #
+
   def create
     if language_params[:name].empty? && language_params[:id].nil?
       redirect_to new_or_delete_language_path

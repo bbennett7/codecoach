@@ -34,7 +34,7 @@ class ResourcesController < ApplicationController
   end
 
   def show
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find_by_id(params[:id])
     respond_to do |format|
       format.json { render json: @resource.to_json }
       format.html { render :show }
@@ -49,23 +49,23 @@ class ResourcesController < ApplicationController
       format.html { render :top_resources }
     end
   end
-  #
-  # def top_resource
-  #   respond_to do |format|
-  #     format.html { render :top_resource }
-  #     format.json { render json: @resource.to_json }
-  #   end
-  # end
-  #
-  # def edit
-  # end
-  #
-  # def update
-  #   @resource.update(resource_params)
-  #
-  #   redirect_to user_resources_path(@current_user)
-  # end
-  #
+
+  def top_resource
+    respond_to do |format|
+      format.html { render :top_resource }
+      format.json { render json: @resource.to_json }
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @resource.update(resource_params)
+
+    redirect_to user_resources_path(@current_user)
+  end
+
   private
 
   def resource_params
@@ -73,7 +73,7 @@ class ResourcesController < ApplicationController
   end
 
   def resource
-    @resource = Resource.find_by_id(resource_params[:user_id])
+    @resource = Resource.find_by_id(params[:id])
   end
 
   def current_user
