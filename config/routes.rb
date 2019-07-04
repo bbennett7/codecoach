@@ -14,11 +14,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :resources
   end
+
   get '/mentor/:id/student', to: 'mentors#show_student', as: 'mentor_student'
 
-  resources :students, except: [:index] do
-    resources :resources, only: [:index, :new, :show, :edit]
-  end
+
   get '/student/:id/mentor', to: 'students#show_mentor', as: 'student_mentor'
   post '/add_mentor', to: 'students#add_mentor'
 

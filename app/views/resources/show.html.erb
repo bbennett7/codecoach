@@ -1,4 +1,4 @@
-<!-- <div class="main">
+<div class="main">
   <h1><%= @resource.website %> - <%= @resource.title %></h1>
   <h2><%= @resource.language.name %></h2>
   <% if @resource.subfield %>
@@ -9,7 +9,7 @@
 
   <h3><%= link_to "visit resource", @resource.url, target: :_blank  %></h3>
 
-  <% if session[:mentor_id] %>
+  <% if session[:user_id] %>
 
     <h3><%= link_to "edit resource", edit_mentor_resource_path(current_user, @resource) %></h3>
   <% end %>
@@ -33,4 +33,4 @@
     <% end %>
 
   <% end %>
-</div> -->
+</div>

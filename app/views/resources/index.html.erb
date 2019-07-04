@@ -1,16 +1,14 @@
-<!-- <div class="main">
+<div class="main">
 
   <h1>my resources</h1>
   <br><hr><br>
 
-  <% if @read_resources.empty? && @unread_resources.empty? && !!session[:mentor_id] %>
+  <% if current_user.resources.empty? %>
     <p>you have not added any resources yet</p>
-    <%= link_to "add resource", new_mentor_resource_path(current_user) %>
-  <% elsif @read_resources.empty? && @unread_resources.empty? && !!session[:student_id] %>
-    <p>your mentor has not added any resources yet</p>
-  <%= link_to "browse top resources", top_resources_path %>
+    <%= link_to "add resource", new_user_resource_path(current_user) %><br>
+    <%= link_to "browse top resources", top_resources_path %>
   <% else %>
-    <% if !@unread_resources.empty? %>
+    <% unless @unread_resources.empty? %>
       <h2>unread resources</h2>
       <% @unread_resources.each_with_index do |resource, i| %>
 
@@ -18,11 +16,14 @@
           <h4><%= resource.language.name %></h4>
         <% end %>
 
-        <li> <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= student_or_mentor_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
-        <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div></li>
+        <li>
+          <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= user_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
+
+          <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
+        </li>
       <% end %>
 
-      <% if !@read_resources.empty? %>
+      <% unless @read_resources.empty? %>
         <br><br><br><hr><br>
         <h2>read resources</h2>
         <% @read_resources.each_with_index do |resource, i| %>
@@ -31,8 +32,10 @@
             <h4><%= resource.language.name %></h4>
           <% end %>
 
-          <li> <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= student_or_mentor_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
-          <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div></li>
+          <li>
+            <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= user_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
+          <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
+        </li>
         <% end %>
       <% end %>
     <% end %>
@@ -60,4 +63,4 @@
       return `<li class="liResource"><a href=${json.url} target="_blank">visit resource on ${json.website}</a></li><li class="liResource"><a href=${resourcesUrl}>more options</a></li>`
     }
   }
-</script> -->
+</script>

@@ -33,9 +33,9 @@
 <%= yield %>
 
 <% if session_id && current_user_is_coach? %>
-  <%= render partial: 'application/recent_resources', locals: {mentor: current_user, no_resources_message: "you have not added any resources yet"} %>
+  <%= render partial: 'application/recent_resources', locals: {no_resources_message: "you have not added any resources yet"} %>
 <% elsif session_id && current_user_is_student? %>
-  <%= render partial: 'application/recent_resources', locals: {mentor: current_user.mentor, no_resources_message: "your mentor has not added any resources yet" } %>
+  <%= render partial: 'application/recent_resources', locals: {no_resources_message: "your coach has not added any resources yet" } %>
 <% end %>
 
   </body>

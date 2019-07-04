@@ -9,13 +9,13 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
     class Resource{
-      constructor(website, title, url, languageId, subfieldId, mentorId, read, studentRating) {
+      constructor(website, title, url, languageId, subfieldId, userId, read, studentRating) {
         this.website = website;
         this.title = title;
         this.url = url;
         this.languageId = languageId;
         this.subfieldId = subfieldId;
-        this.mentorId = mentorId;
+        this.userId = userId;
         this.read = read;
         this.studentRating = studentRating;
       };
@@ -30,13 +30,13 @@
         var values = $(this).serialize();
         var userId = values.charAt(values.length - 1)
 
-        var posting = $.post('/mentors/' + userId + '/resources', values);
+        var posting = $.post('/resources', values);
 
         posting.done(function(data) {
           var resource = data;
-          var resourcePath = `http://localhost:3000/mentors/` + userId + `/resources/` + resource.id;
+          var resourcePath = `http://localhost:3000/users/` + userId + `/resources/` + resource.id;
 
-          let newResource = new Resource(data.website, data.title, data.url, data.language_id, data.subfield_id, data.mentor_id, data.read, data.student_rating)
+          let newResource = new Resource(data.website, data.title, data.url, data.language_id, data.subfield_id, data.user_id, data.read, data.student_rating)
 
           var newestResourceDiv = document.getElementById('newestResource')
           var noResourceMessage = document.getElementById('noResourceMessage')

@@ -1,17 +1,19 @@
 class ResourcesController < ApplicationController
-  # before_action :current_user
-  # before_action :resource, only:[:show, :edit, :update, :top_resource]
+  before_action :current_user
+  before_action :resource, only:[:show, :edit, :update, :top_resource]
   # before_action :logged_in?
   #
   def new
     @resource = Resource.new
   end
-  #
-  # def index
-  #   @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
-  #
-  #   @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
-  # end
+
+  def index
+    if @current_user.resources
+      @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+
+      @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
+    end
+  end
 
   def create
     if !params[:resource][:subfield][:name].empty?
@@ -31,22 +33,22 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # def show
-  #   @resource = Resource.find(params[:id])
-  #   respond_to do |format|
-  #     format.json { render json: @resource.to_json }
-  #     format.html { render :show }
-  #   end
-  # end
-  #
-  # def top_resources
-  #   @top_resources = Resource.top_resources
-  #
-  #   respond_to do |format|
-  #     format.json { render json: @top_resources.to_json }
-  #     format.html { render :top_resources }
-  #   end
-  # end
+  def show
+    @resource = Resource.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @resource.to_json }
+      format.html { render :show }
+    end
+  end
+
+  def top_resources
+    @top_resources = Resource.top_resources
+
+    respond_to do |format|
+      format.json { render json: @top_resources.to_json }
+      format.html { render :top_resources }
+    end
+  end
   #
   # def top_resource
   #   respond_to do |format|
@@ -64,13 +66,17 @@ class ResourcesController < ApplicationController
   #   redirect_to user_resources_path(@current_user)
   # end
   #
-  # private
-  #
-  # def resource_params
-  #   params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :mentor_id, :read, :student_rating)
-  # end
-  #
-  # def resource
-  #   @resource = Resource.find_by_id(params[:id])
-  # end
+  private
+
+  def resource_params
+    params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :user_id, :read, :student_rating)
+  end
+
+  def resource
+    @resource = Resource.find_by_id(resource_params[:user_id])
+  end
+
+  def current_user
+    @current_user = User.find_by_id(session[:user_id])
+  end
 end
