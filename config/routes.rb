@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   end
 
   get '/find_a_coach', to: 'users#index'
-
   post '/get_coach', to: 'users#get_coach'
 
-  #resources :connections, only: [:create]
+  get '/users/:user_id/coach', to: 'users#show_coach', as: 'user_coach'
+  get '/users/:user_id/student', to: 'users#show_student', as: 'user_student'
+
 
   resources :resources, only: [:index, :create, :update]
   get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'
