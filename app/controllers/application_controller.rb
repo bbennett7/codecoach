@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user_route
+    if current_user.id == params[:id].to_i
+      true
+    else
+      redirect_to user_path(@current_user)
+    end
+  end
+
 
   def logged_in?
     if session[:user_id].nil?
