@@ -5,10 +5,10 @@
   <% if current_user_is_coach? %>
     <h4><%= link_to "add resource", new_user_resource_path(current_user) %></h4>
 
-  <% elsif current_user_is_student? && current_user.connection_id.nil? %>
+  <% elsif current_user_is_student? && current_user.coach_id.nil? %>
     <h4><%= link_to "find a coach", find_a_coach_path %></h4>
 
-  <% elsif current_user_is_student? && current_user.connection_id %>
+  <% elsif current_user_is_student? && current_user.coach_id %>
     <h4><%= link_to "add resource", new_user_resource_path(current_user) %></h4>
   <% end %>
 

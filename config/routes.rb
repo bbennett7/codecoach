@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   get '/find_a_coach', to: 'users#index'
 
-  resources :connections, only: [:create]
+  post '/get_coach', to: 'users#get_coach'
+
+  #resources :connections, only: [:create]
 
   resources :resources, only: [:index, :create, :update]
   get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'

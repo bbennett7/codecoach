@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   # before_action :current_user_is_student?, only: [:index]
   #
   def index
-    @available_coaches = User.all.collect{|user| user if user.connection_id.nil? && user.user_type == "coach"}
+    @available_coaches = User.all.collect{|user| user if user.student.nil? && user.user_type == "coach"}
     @available_coaches.compact!
 
-    @connection = Connection.new 
+  #  @connection = Connection.new
   end
 
   def new
@@ -32,6 +32,13 @@ class UsersController < ApplicationController
       format.json { render json: @current_user.to_json( only: [:username, :first_name, :email, :profile_img, :location, :github_link], include: [languages: {only: :name}] ) }
       format.html { render :show }
     end
+  end
+
+  def get_coach
+    @current_user.coach_id = params[:coach_id]
+    User.find_by_id(params[:coach_id]).student = @current_user
+
+    redirect_to user_path(@current_user)
   end
 
   def update

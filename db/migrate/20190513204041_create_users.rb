@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :location
       t.string :github_link
       t.string :uid
-      t.integer :connection_id
+      t.references :coach, index: true
       t.string :password_digest
 
       t.timestamps

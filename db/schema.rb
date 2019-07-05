@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_183407) do
+ActiveRecord::Schema.define(version: 2019_05_13_205021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "connections", force: :cascade do |t|
-    t.bigint "coach_id"
-    t.bigint "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["coach_id"], name: "index_connections_on_coach_id", unique: true
-    t.index ["student_id"], name: "index_connections_on_student_id", unique: true
-  end
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
@@ -67,12 +58,11 @@ ActiveRecord::Schema.define(version: 2019_07_03_183407) do
     t.string "location"
     t.string "github_link"
     t.string "uid"
-    t.integer "connection_id"
+    t.bigint "coach_id"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_users_on_coach_id"
   end
 
-  add_foreign_key "connections", "users", column: "coach_id"
-  add_foreign_key "connections", "users", column: "student_id"
 end
