@@ -26,9 +26,9 @@ class LanguagesController < ApplicationController
   end
 
   def destroy
-    @languages = language_params[:id]
-    @languages.delete("")
+    @languages = language_delete_params[:id]
 
+    @languages.delete("")
     @languages.each do |lang_id|
       language = Language.find_by_id(lang_id)
       @current_user.languages.destroy(language)
@@ -41,5 +41,9 @@ class LanguagesController < ApplicationController
 
   def language_params
     params.require(:language).permit(:name, :id)
+  end
+
+  def language_delete_params
+    params.require(:language).permit(:id => [])
   end
 end

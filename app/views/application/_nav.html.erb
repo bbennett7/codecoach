@@ -7,6 +7,7 @@
     <%if current_user_is_coach? && current_user.student %>
       <h4><%= link_to "my student", user_student_path(current_user.student) %></h4>
     <% end %>
+    
   <% elsif current_user_is_student? && current_user.coach_id.nil? %>
     <h4><%= link_to "find a coach", find_a_coach_path %></h4>
   <% elsif current_user_is_student? && current_user.coach_id %>

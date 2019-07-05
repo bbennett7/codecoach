@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   before_action :logged_in?
   before_action :current_user, only:[:index, :create, :show, :update]
+  before_action :current_user_is_coach?, only:[:new, :create, :edit, :update ]
   before_action :resource, only:[:show, :edit, :update, :top_resource]
 
   def new
@@ -61,9 +62,6 @@ class ResourcesController < ApplicationController
       format.html { render :top_resource }
       format.json { render json: @resource.to_json }
     end
-  end
-
-  def edit
   end
 
   def update
