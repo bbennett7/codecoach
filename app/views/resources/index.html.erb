@@ -3,7 +3,7 @@
   <h1>my resources</h1>
   <br><hr><br>
 
-  <% if current_user.resources.empty? %>
+  <% if @resources.empty? %>
     <p>you have not added any resources yet</p>
     <%= link_to "add resource", new_user_resource_path(current_user) %><br>
     <%= link_to "browse top resources", top_resources_path %>

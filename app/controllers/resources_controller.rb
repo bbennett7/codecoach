@@ -8,10 +8,16 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    if @current_user.resources
-      @read_resources = @current_user.resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+    if @current_user.user_type == "coach"
+      @resources = @current_user.resources
+    elsif @current_user.user_type == "student"
+      @resources = @current_user.coach.resources
+    end
 
-      @unread_resources = @current_user.resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
+    if !@resources.empty?
+      @read_resources = @resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+
+      @unread_resources = @resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
     end
   end
 
