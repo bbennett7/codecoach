@@ -4,7 +4,7 @@
 
   <% if current_user_is_coach? %>
     <h4><%= link_to "add resource", new_user_resource_path(current_user) %></h4>
-    <%if current_user_is_coach && current_user.student %>
+    <%if current_user_is_coach? && current_user.student %>
       <h4><%= link_to "my student", user_student_path(current_user.student) %></h4>
     <% end %>
   <% elsif current_user_is_student? && current_user.coach_id.nil? %>
