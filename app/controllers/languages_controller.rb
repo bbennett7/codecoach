@@ -16,11 +16,8 @@ class LanguagesController < ApplicationController
         @language = Language.find_by_id(language_params[:id])
       end
 
-      if @language && !@current_user.languages.include?(@language)
-        @current_user.languages << @language
-
-        redirect_to user_path(@current_user)
-      end
+      @current_user.languages << @language if @language && !@current_user.languages.include?(@language)
+      redirect_to user_path(@current_user)
     end
 
   end
