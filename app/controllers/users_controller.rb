@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user, only:[:show, :get_coach, :update]
+  before_action :current_user, only:[:show, :get_coach, :set_user_type, :update]
   before_action :logged_in?, except: [:new, :create]
   before_action :current_user_is_student?, only: [:index]
   before_action :current_user_route, only: [:show, :edit]
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def set_user_type
+    user_type = params[:user_type]
+    @current_user.user_type = user_type
+    @current_user.save
+    
+    redirect_to user_path(@current_user)
   end
 
   def show

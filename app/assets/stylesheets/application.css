@@ -49,7 +49,7 @@ nav h4 {
   margin-top: 0px;
 }
 
-h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit] {
+h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit], button {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
 }
@@ -79,6 +79,14 @@ h2 a, h2 a:visited {
 li {
   font-family: 'PT Serif', serif;
   font-weight: 400;
+}
+
+button {
+  background-color: rgb(4, 56, 39);
+  color: rgb(219, 221, 224);
+  font-size: 1.5em;
+  padding: 6px 40px;
+  border-radius: 5px;
 }
 
 input[type=submit], input[type=radio] {

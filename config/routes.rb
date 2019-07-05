@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/choose_user_type', to: 'users#choose_user_type'
+  post '/set_user_type', to: 'users#set_user_type'
   get '/logout', to: 'sessions#logout'
 
   resources :users
@@ -26,5 +28,5 @@ Rails.application.routes.draw do
   get 'resources/top_resources', to: 'resources#top_resources', as: 'top_resources'
   get 'resources/top_resources/:id', to: 'resources#top_resource', as: 'top_resource'
 
-  get '/auth/github/callback' => 'sessions#mentor_gh_create'
+  get '/auth/github/callback' => 'sessions#gh_create'
 end

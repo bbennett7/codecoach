@@ -21,7 +21,7 @@
       <div id="logo"><a href="/""><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(204, 217, 229); font-weight: bold;">coach</span></a></div>
     </header>
 
-<% if session_id %>
+<% if session_id && current_user.user_type %>
   <nav>
     <%= render partial: 'application/nav' %>
   </nav>
