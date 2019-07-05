@@ -3,6 +3,8 @@ class ResourcesController < ApplicationController
   before_action :current_user, only:[:index, :create, :show, :update]
   before_action :current_user_is_coach?, only:[:new, :create, :edit, :update ]
   before_action :resource, only:[:show, :edit, :update, :top_resource]
+  before_action :current_user_route, only: [:index, :show, :edit]
+  before_action :current_user_resource, only: [:show, :edit]
 
   def new
     @resource = Resource.new

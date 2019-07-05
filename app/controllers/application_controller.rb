@@ -25,7 +25,26 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_route
-    if current_user.id == params[:id].to_i
+    if params[:user_id]
+      if current_user.id == params[:user_id].to_i
+        true
+      else
+        redirect_to user_path(@current_user)
+      end
+    else
+      if current_user.id == params[:id].to_i
+        true
+      else
+        redirect_to user_path(@current_user)
+      end
+    end
+  end
+
+  def current_user_resource
+    resource = Resource.find_by_id(params[:id].to_i)
+    if current_user.user_type == "student" && current_user.coach.nil?
+      redirect_to user_path(@current_user)
+    elsif current_user.id == resource.user_id || current_user.coach.id == resource.user_id
       true
     else
       redirect_to user_path(@current_user)
