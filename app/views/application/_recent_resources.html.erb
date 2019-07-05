@@ -1,12 +1,12 @@
 <div class="recent_resources_col">
   <h3>recently added resources</h3>
   <hr>
-  <% if current_user.resources.empty? %>
+  <% if resources.empty?%>
     <div id="newestResource"></div>
     <p id="noResourceMessage"><%= no_resources_message %></p>
   <% else %>
     <div id="newestResource"></div>
-    <% current_user.resources.last(5).reverse.each do |resource| %>
+    <% resources.last(5).reverse.each do |resource| %>
     <p><%= link_to "#{resource.website} - #{resource.title}", user_resource_path(current_user, resource) %></p>
     <% end %>
     <p id="noResourceMessage"></p>

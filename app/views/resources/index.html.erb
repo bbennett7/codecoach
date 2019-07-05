@@ -1,7 +1,6 @@
 <div class="main">
 
   <h1>my resources</h1>
-  <br><hr><br>
 
   <% if @resources.empty? %>
     <p>you have not added any resources yet</p>
@@ -9,6 +8,7 @@
     <%= link_to "browse top resources", top_resources_path %>
   <% else %>
     <% unless @unread_resources.empty? %>
+      <br><hr><br>
       <h2>unread resources</h2>
       <% @unread_resources.each_with_index do |resource, i| %>
 
@@ -22,21 +22,21 @@
           <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
         </li>
       <% end %>
+    <% end %>
 
-      <% unless @read_resources.empty? %>
-        <br><br><br><hr><br>
-        <h2>read resources</h2>
-        <% @read_resources.each_with_index do |resource, i| %>
+    <% unless @read_resources.empty? %>
+      <br><br><br><hr><br>
+      <h2>read resources</h2>
+      <% @read_resources.each_with_index do |resource, i| %>
 
-          <% if @read_resources.first == resource || resource.language != @read_resources[i-1].language %>
-            <h4><%= resource.language.name %></h4>
-          <% end %>
-
-          <li>
-            <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= user_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
-          <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
-        </li>
+        <% if @read_resources.first == resource || resource.language != @read_resources[i-1].language %>
+          <h4><%= resource.language.name %></h4>
         <% end %>
+
+        <li>
+          <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= user_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
+        <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
+      </li>
       <% end %>
     <% end %>
   <% end %>

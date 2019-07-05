@@ -14,7 +14,7 @@ class ResourcesController < ApplicationController
       @resources = @current_user.coach.resources
     end
 
-    if !@resources.empty?
+    unless @resources.empty?
       @read_resources = @resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
 
       @unread_resources = @resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
