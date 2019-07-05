@@ -138,6 +138,25 @@ select {
   text-align: center
 }
 
+#enter_site {
+  line-height: 9em;
+  vertical-align: bottom;
+}
+
+.access_section h1 a, .access_section h1 a:visited  {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+}
+
+.access_section h1 a:hover {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-decoration: underline;
+  color: rgb(4, 56, 39);
+}
+
 .access_section label, .access_section input[type=text], .access_section input[type=password] {
   text-align: right;
   float: left;
