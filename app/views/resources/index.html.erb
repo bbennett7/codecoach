@@ -3,9 +3,13 @@
   <h1>my resources</h1>
 
   <% if @resources.empty? %>
-    <p>you have not added any resources yet</p>
-    <%= link_to "add resource", new_user_resource_path(current_user) %><br>
-    <%= link_to "browse top resources", top_resources_path %>
+    <p>you do not have any resources yet</p>
+    <%= link_to "browse top resources", top_resources_path %><br>
+    <% if current_user_is_coach? %>
+      <%= link_to "add resource", new_user_resource_path(current_user) %><br>
+    <% elsif current_user_is_student? %>
+      <%= link_to "find a coach", find_a_coach_path %><br>
+    <% end %>
   <% else %>
     <% unless @unread_resources.empty? %>
       <br><hr><br>
