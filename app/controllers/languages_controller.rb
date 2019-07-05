@@ -19,7 +19,6 @@ class LanguagesController < ApplicationController
       @current_user.languages << @language if @language && !@current_user.languages.include?(@language)
       redirect_to user_path(@current_user)
     end
-
   end
 
   def destroy

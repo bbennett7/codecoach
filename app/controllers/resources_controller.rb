@@ -14,9 +14,9 @@ class ResourcesController < ApplicationController
     @resources = []
 
     if @current_user.user_type == "coach"
-      @resources ||= @current_user.resources
+      @resources = @current_user.resources
     elsif @current_user.user_type == "student"
-      @resources ||= @current_user.coach.resources
+      @resources = @current_user.coach.resources if @current_user.coach
     end
 
     unless @resources.empty?

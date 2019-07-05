@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by_id(session[:user_id])
   end
 
-
   def current_user_is_coach?
     if current_user.user_type == "coach"
       true
@@ -14,7 +13,6 @@ class ApplicationController < ActionController::Base
       redirect_to user_path(@current_user)
     end
   end
-
 
   def current_user_is_student?
     if current_user.user_type == "student"
@@ -51,13 +49,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def logged_in?
     if session[:user_id].nil?
       redirect_to root_path
     end
   end
-
 
   def logged_out?
     !!session[:user_id].nil?
