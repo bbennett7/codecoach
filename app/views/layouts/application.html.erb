@@ -31,8 +31,10 @@
 
 <% if session_id && current_user_is_coach? %>
   <%= render partial: 'application/recent_resources', locals: {resources: current_user.resources, no_resources_message: "you have not added any resources yet"} %>
-<% elsif session_id && current_user_is_student? %>
+<% elsif session_id && current_user_is_student? && current_user.coach %>
   <%= render partial: 'application/recent_resources', locals: {resources: current_user.coach.resources, no_resources_message: "your coach has not added any resources yet" } %>
+  <% elsif session_id && current_user_is_student? && current_user.coach.nil? %>
+    <%= render partial: 'application/recent_resources', locals: {resources: [], no_resources_message: "you do not have a coach yet" } %>
 <% end %>
 
   </body>
