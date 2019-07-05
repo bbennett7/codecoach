@@ -1,50 +1,28 @@
 class ApplicationController < ActionController::Base
-  #
-  #
-  # def index
-  #   logged_out?
-  # end
-  #
-  # private
-  #
-  # def logged_in?
-  #   if session[:user_id].nil?
-  #     redirect_to root_path
-  #   else
-  #     redirect_to user_path(@current_user)
-  #   end
-  # end
-  #
-  # def logged_out?
-  #   true if logged_in? == false
-  # end
 
-  
-  # # def student_or_mentor_path(user)
-  # #   if session[:mentor_id]
-  # #     mentor_path(user)
-  # #   elsif session[:student_id]
-  # #     student_path(user)
-  # #   end
-  # # end
-  # #
-  # # def student_or_mentor_resources_path(user)
-  # #   if session[:mentor_id]
-  # #     mentor_resources_path(user)
-  # #   elsif session[:student_id]
-  # #     student_resources_path(user)
-  # #   end
-  # # end
-  # #
-  # # def student_or_mentor_resource_path(user, resource)
-  # #   if session[:mentor_id]
-  # #     mentor_resource_path(user, resource)
-  # #   elsif session[:student_id]
-  # #     student_resource_path(user, resource)
-  # #   end
-  # # end
-  #
-  # def find_mentor
-  #   @mentor = Mentor.find_by_id(params[:mentor_id])
-  # end
+  private
+
+  def current_user
+    @current_user = User.find_by_id(session[:user_id])
+  end
+
+  def current_user_is_coach?
+    true if current_user.user_type == "coach"
+  end
+
+  def current_user_is_student?
+    true if current_user.user_type == "student"
+  end
+
+  def logged_in?
+    if session[:user_id].nil?
+      redirect_to root_path
+    else
+      redirect_to user_path(@current_user)
+    end
+  end
+
+  def logged_out?
+    !!session[:user_id].nil?
+  end
 end

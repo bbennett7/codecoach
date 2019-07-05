@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
-  before_action :current_user
-  # before_action :logged_in?, except: [:new, :create]
-  # before_action :current_user_is_student?, only: [:index]
-  #
+  before_action :current_user, only:[:show, :get_coach, :update]
+  before_action :logged_in?, except: [:new, :create]
+  before_action :current_user_is_student?, only: [:index]
+
   def index
     @available_coaches = User.all.collect{|user| user if user.student.nil? && user.user_type == "coach"}
     @available_coaches.compact!
-
-  #  @connection = Connection.new
   end
 
   def new
@@ -50,9 +48,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :first_name, :last_name, :user_type, :email, :profile_img, :location, :github_link, :password, :password_confirmation)
-  end
-
-  def current_user
-    @current_user = User.find_by_id(session[:user_id])
   end
 end

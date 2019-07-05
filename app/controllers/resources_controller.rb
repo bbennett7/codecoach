@@ -1,8 +1,8 @@
 class ResourcesController < ApplicationController
-  before_action :current_user
+  before_action :logged_in?
+  before_action :current_user, only:[:index, :create, :show, :update]
   before_action :resource, only:[:show, :edit, :update, :top_resource]
-  # before_action :logged_in?
-  #
+
   def new
     @resource = Resource.new
   end
@@ -80,9 +80,5 @@ class ResourcesController < ApplicationController
 
   def resource
     @resource = Resource.find_by_id(params[:id])
-  end
-
-  def current_user
-    @current_user = User.find_by_id(session[:user_id])
   end
 end

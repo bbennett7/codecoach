@@ -1,7 +1,7 @@
 class LanguagesController < ApplicationController
-   before_action :current_user
-  # before_action :logged_in?
-  #
+  before_action :logged_in?
+  before_action :current_user, only:[:create, :destroy]
+
   def new_or_destroy
     @language = Language.new
   end
@@ -42,9 +42,4 @@ class LanguagesController < ApplicationController
   def language_params
     params.require(:language).permit(:name, :id)
   end
-
-  def current_user
-    @current_user = User.find_by_id(session[:user_id])
-  end
-
 end
