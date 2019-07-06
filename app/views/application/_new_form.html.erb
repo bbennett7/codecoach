@@ -11,9 +11,9 @@
 <% end %>
 
 <%= form_for user do |f|%>
-  <%= f.label :user_type, "coach" %>
-  <%= f.radio_button :user_type, "coach" %>
-  <%= f.label :user_type, "student" %>
+  <%= f.label :user_type, "coach", class: "radio" %>
+  <%= f.radio_button :user_type, "coach", class: "radio" %><br>
+  <%= f.label :user_type, "student", class: "radio"  %>
   <%= f.radio_button :user_type, "student" %><br><br>
 
   <%= f.label :first_name, "first name" %>
