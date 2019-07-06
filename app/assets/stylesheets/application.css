@@ -24,14 +24,15 @@ body {
 
 header {
   width: 110%;
-  height: 125px;
+  height: 100px;
   background-color: rgb(4, 56, 39);
   border: solid 2px black;
   font-weight: 200;
   font-family: 'Raleway', sans-serif;
   color: rgb(101, 104, 102);
-  font-size: 5.25em;
+  font-size: 3em;
   padding-top: 20px;
+  padding-left: 10px;
   margin-left: -2%;
   margin-top: -1%;
   margin-bottom: 1.5%;
@@ -155,6 +156,12 @@ hr {
 select {
   background-color: rgb(234, 241, 248);
   color: rgb(4, 56, 39);
+  font-size: .9em;
+}
+
+#about {
+  margin: 30px 70px 0px 70px;
+  text-align: left;
   font-size: .9em;
 }
 
