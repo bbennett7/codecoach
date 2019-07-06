@@ -24,14 +24,14 @@ body {
 
 header {
   width: 110%;
-  height: 100px;
+  height: 110px;
   background-color: rgb(4, 56, 39);
   border: solid 2px black;
   font-weight: 200;
   font-family: 'Raleway', sans-serif;
   color: rgb(101, 104, 102);
   font-size: 3em;
-  padding-top: 20px;
+  padding-top: 25px;
   padding-left: 10px;
   margin-left: -2%;
   margin-top: -1%;
