@@ -11,6 +11,25 @@
       <%= link_to "find a coach", find_a_coach_path %><br>
     <% end %>
   <% else %>
+
+  <% unless @priorities.empty? %>
+    <br><hr><br>
+    <h2>priority</h2>
+    <% @priorities.each_with_index do |resource, i| %>
+
+      <% if @priorities.first == resource || resource.language != @priorities[i-1].language %>
+        <h4><%= resource.language.name %></h4>
+      <% end %>
+
+      <li>
+        <a href="#" data-resource-id="<%= resource.id %>" data-user-info="<%= user_path(current_user) %>" onClick="resourceInfo(); return false"> <%= "#{resource.subfield.name} - #{resource.website} - #{resource.title}" %> </a>
+
+        <div style="padding-left: 30px;" id="resource-<%= resource.id %>"></div>
+      </li>
+    <% end %>
+  <% end %>
+
+
     <% unless @unread_resources.empty? %>
       <br><hr><br>
       <h2>unread resources</h2>

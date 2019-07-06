@@ -38,14 +38,14 @@
     <% end %>
 
     <footer>
-      <h6><%= mail_to "bryn.bennett@gmail.com", "contact codecoach"%></h6>
+      <h6><%= mail_to "bryn.bennett@gmail.com", "contact"%></h6>
       <h6><%= link_to "about", about_path %></h6>
       <% if session_id %>
         <h6><%= link_to "my profile", user_path(current_user) %> </h6>
-        <h6><%= link_to "logout", logout_path %></h6>
+        <h6><%= link_to "log out", logout_path %></h6>
       <% else %>
-        <h6><%= link_to "login", login_path %> </h6>
-        <h6><%= link_to "signup", new_user_path %></h6>
+        <h6><%= link_to "log in", login_path %> </h6>
+        <h6><%= link_to "sign up", new_user_path %></h6>
       <% end %>
     </footer>
   </body>

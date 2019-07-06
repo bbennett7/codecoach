@@ -18,8 +18,10 @@
     <h3>have you read this resource?</h3>
     <br>
     <%= form_for @resource, :url => resource_path(@resource), :html => {:method => :put} do |f| %>
-      <p><%= f.label :read, "mark resource as read" %>
+      <p><%= f.label :read, "mark as read" %>
       <%= f.check_box :read %></p>
+      <p><%= f.label :read, "mark as priority" %>
+      <%= f.check_box :priority %></p>
       <p><%= f.label :student_rating, "did you find this resource helpful?" %><p>
       <p><% [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
         <%= f.label :student_rating, num %>

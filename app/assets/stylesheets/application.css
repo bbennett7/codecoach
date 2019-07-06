@@ -229,7 +229,7 @@ select {
   background-color: white;
   margin-top: 10px;
   margin-left: 30px;
-  padding: 30px;
+  padding: 30px 30px 80px 30px;
   float: left;
   display: inline-block;
   box-shadow: 2px 2px rgb(112,128,144);
@@ -238,7 +238,7 @@ select {
 .recent_resources_col {
   border: solid 1px rgb(4, 56, 39);
   width: 25%;
-  height: auto;
+  height: 100%;
   min-height: 400px;
   background-color: white;
   margin-top: 10px;

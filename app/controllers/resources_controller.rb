@@ -20,9 +20,11 @@ class ResourcesController < ApplicationController
     end
 
     unless @resources.empty?
-      @read_resources = @resources.select{ |resource| resource.read }.sort_by{|resource| resource.language }
+      @priorities = @resources.select{ |resource| resource.priority }.sort_by{|resource| resource.language }
 
-      @unread_resources = @resources.select{ |resource| !resource.read }.sort_by{|resource| resource.language }
+      @read_resources = @resources.select{ |resource| resource.read && !resource.priority }.sort_by{|resource| resource.language }
+
+      @unread_resources = @resources.select{ |resource| !resource.read && !resource.priority }.sort_by{|resource| resource.language }
     end
   end
 
@@ -77,7 +79,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:website, :title, :url, :language_id, :subfield_id, :user_id, :read, :student_rating)
+    params.require(:resource).permit(:website, :title, :url, :priority, :language_id, :subfield_id, :user_id, :read, :student_rating)
   end
 
   def resource
