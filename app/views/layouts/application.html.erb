@@ -17,9 +17,13 @@
 
   <body>
 
+<!-- green codecoach header -->
+
     <header>
       <div id="logo"><a href="/""><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(204, 217, 229); font-weight: bold;">coach</span></a></div>
     </header>
+
+<!-- navigation bar if user is logged in -->
 
     <% if session_id && current_user.user_type %>
       <nav>
@@ -27,15 +31,23 @@
       </nav>
     <% end %>
 
+<!-- individual page renders -->
+
     <%= yield %>
+
+<!-- recent resources section if user is logged in with custom no resource messages -->
 
     <% if session_id && current_user_is_coach? %>
       <%= render partial: 'application/recent_resources', locals: {resources: current_user.resources, no_resources_message: "you have not added any resources yet"} %>
+
     <% elsif session_id && current_user_is_student? && current_user.coach %>
       <%= render partial: 'application/recent_resources', locals: {resources: current_user.coach.resources, no_resources_message: "you do not have any resources yet" } %>
+
       <% elsif session_id && current_user_is_student? && current_user.coach.nil? %>
         <%= render partial: 'application/recent_resources', locals: {resources: [], no_resources_message: "you do not have any resources yet" } %>
     <% end %>
+
+<!-- footer section for logged in and logged out user -->
 
     <footer>
       <h6><%= mail_to "bryn.bennett@gmail.com", "contact"%></h6>
@@ -48,6 +60,7 @@
         <h6><%= link_to "sign up", new_user_path %></h6>
       <% end %>
     </footer>
+    
   </body>
 </html>
 
