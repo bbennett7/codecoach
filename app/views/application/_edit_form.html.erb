@@ -15,7 +15,11 @@
     <%= f.text_field :email %></p>
 
     <p><%= f.label :profile_img, "profile picture (url)" %>
-    <%= f.text_field :profile_img %></p>
+    <% if user.profile_img == "/images/no-photo.png" %>
+      <%= f.text_field :profile_img, value: "" %>
+    <% else %>
+      <%= f.text_field :profile_img %>
+    <% end %> </p>
 
     <p><%= f.label :location, "location" %>
     <%= f.text_field :location %></p>

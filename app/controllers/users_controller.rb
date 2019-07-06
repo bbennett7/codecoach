@@ -51,6 +51,8 @@ class UsersController < ApplicationController
 
   def update
     @current_user.update(user_params)
+    @current_user.profile_img = "/images/no-photo.png" if @current_user.profile_img.empty?
+    @current_user.save 
     redirect_to user_path(@current_user)
   end
 
