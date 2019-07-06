@@ -21,27 +21,29 @@
       <div id="logo"><a href="/""><span style="color: white; padding-left: 20px">code</span><span style="color: rgb(204, 217, 229); font-weight: bold;">coach</span></a></div>
     </header>
 
-<% if session_id && current_user.user_type %>
-  <nav>
-    <%= render partial: 'application/nav' %>
-  </nav>
-<% end %>
+    <% if session_id && current_user.user_type %>
+      <nav>
+        <%= render partial: 'application/nav' %>
+      </nav>
+    <% end %>
 
-<%= yield %>
+    <%= yield %>
 
-<% if session_id && current_user_is_coach? %>
-  <%= render partial: 'application/recent_resources', locals: {resources: current_user.resources, no_resources_message: "you have not added any resources yet"} %>
-<% elsif session_id && current_user_is_student? && current_user.coach %>
-  <%= render partial: 'application/recent_resources', locals: {resources: current_user.coach.resources, no_resources_message: "you do not have any resources yet" } %>
-  <% elsif session_id && current_user_is_student? && current_user.coach.nil? %>
-    <%= render partial: 'application/recent_resources', locals: {resources: [], no_resources_message: "you do not have any resources yet" } %>
-<% end %>
+    <% if session_id && current_user_is_coach? %>
+      <%= render partial: 'application/recent_resources', locals: {resources: current_user.resources, no_resources_message: "you have not added any resources yet"} %>
+    <% elsif session_id && current_user_is_student? && current_user.coach %>
+      <%= render partial: 'application/recent_resources', locals: {resources: current_user.coach.resources, no_resources_message: "you do not have any resources yet" } %>
+      <% elsif session_id && current_user_is_student? && current_user.coach.nil? %>
+        <%= render partial: 'application/recent_resources', locals: {resources: [], no_resources_message: "you do not have any resources yet" } %>
+    <% end %>
 
+    <footer>
+      <h6>contact codecoach</h6>
+      <h6>about</h6>
+      <h6>login</h6>
+      <h6>signup</h6>
+    </footer>
   </body>
-
-  <footer>
-
-  </footer>
 </html>
 
 <!-- <script type="application/javascript" src="languages.js"></script> -->

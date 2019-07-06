@@ -19,18 +19,54 @@
 
 body {
   background-color: rgb(204, 217, 229);
+  height: auto;
 }
 
 header {
-  width: 100%;
+  width: 110%;
   height: 125px;
   background-color: rgb(4, 56, 39);
-  border: solid 1px black;
+  border: solid 2px black;
   font-weight: 200;
   font-family: 'Raleway', sans-serif;
   color: rgb(101, 104, 102);
   font-size: 5.25em;
   padding-top: 20px;
+  margin-left: -2%;
+  margin-top: -1%;
+  /* box-shadow: 3px 3px black; */
+}
+
+footer {
+  border-top: solid 1px black;
+  width: 220%;
+  height: 150px;
+  background-color: white;
+  font-weight: 200;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(101, 104, 102);
+  font-size: 5.25em;
+  display: block;
+  float: left;
+  margin-top: 300px;
+  margin-bottom: -150px;
+  margin-left: -52%;
+}
+
+footer > h6 {
+  margin-top: 16px;
+  margin-bottom: 0px;
+  margin-left: 2%;
+  margin-right: 9%;
+  line-height: 1em;
+  font-size: .2em;
+  text-align: center;
+}
+
+#footer_clear {
+  width: 100%;
+  display: inline;
+  float: left;
 }
 
 nav {
@@ -135,7 +171,8 @@ select {
   margin: 30px 25% auto 25%;
   padding-top: 30px;
   padding-bottom: 30px;
-  text-align: center
+  text-align: center;
+  box-shadow: 3px 3px rgb(112,128,144);
 }
 
 #enter_site {
@@ -178,7 +215,7 @@ select {
 .signup_radio > .field_with_errors {
   text-align: right;
   width: 50%;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 .main {
@@ -194,6 +231,7 @@ select {
   padding: 30px;
   float: left;
   display: inline-block;
+  box-shadow: 3px 3px rgb(112,128,144);
 }
 
 .recent_resources_col {
@@ -207,6 +245,7 @@ select {
   padding: 30px;
   float: left;
   display: inline-block;
+  box-shadow: 3px 3px rgb(112,128,144);
 }
 
 .field_with_errors {
