@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      @user.profile_img = ""
       render 'new'
     end
   end
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     user_type = params[:user_type]
     @current_user.user_type = user_type
     @current_user.save
-    
+
     redirect_to user_path(@current_user)
   end
 
