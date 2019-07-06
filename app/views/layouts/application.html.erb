@@ -40,8 +40,13 @@
     <footer>
       <h6>contact codecoach</h6>
       <h6>about</h6>
-      <h6>login</h6>
-      <h6>signup</h6>
+      <% if session_id %>
+        <h6> my profile </h6>
+        <h6>log out</h6>
+      <% else %>
+        <h6>login</h6>
+        <h6>signup</h6>
+      <% end %>
     </footer>
   </body>
 </html>
