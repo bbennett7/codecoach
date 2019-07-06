@@ -12,9 +12,10 @@
         <%= language.name %><br>
       <% end %>
 
-      <%= form_tag('/get_coach', method: :post)%>
+      <%= form_tag('/get_coach', method: :post) do %>
         <%= hidden_field_tag 'coach_id', value=coach.id %>
         <%= submit_tag "be my coach" %>
+      <% end %>
       <br><br>
     <% end %>
   <% end %>
