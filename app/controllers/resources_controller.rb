@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   before_action :logged_in?
   before_action :current_user, only:[:index, :create, :show, :update]
-  before_action :current_user_is_coach?, only:[:new, :create, :edit, :update ]
+  before_action :current_user_is_coach?, only:[:new, :create, :edit]
   before_action :resource, only:[:show, :edit, :update, :top_resource]
   before_action :current_user_route, only: [:index, :show, :edit]
   before_action :current_user_resource, only: [:show, :edit]
@@ -52,6 +52,12 @@ class ResourcesController < ApplicationController
     end
   end
 
+  def update
+    @resource.update(resource_params)
+    @resource.save
+    redirect_to user_resources_path(@current_user)
+  end
+
   def top_resources
     @top_resources = Resource.top_resources
 
@@ -66,12 +72,6 @@ class ResourcesController < ApplicationController
       format.html { render :top_resource }
       format.json { render json: @resource.to_json }
     end
-  end
-
-  def update
-    @resource.update(resource_params)
-
-    redirect_to user_resources_path(@current_user)
   end
 
   private

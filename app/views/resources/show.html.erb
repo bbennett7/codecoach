@@ -10,14 +10,14 @@
   <h3><%= link_to "visit resource", @resource.url, target: :_blank  %></h3>
   <% if current_user_is_coach? %>
     <h3><%= link_to "edit resource", edit_user_resource_path(current_user, @resource) %></h3>
-  <% end %> 
+  <% end %>
 
   <% if current_user_is_student? %>
     <br><hr><br>
 
     <h3>have you read this resource?</h3>
     <br>
-    <%= form_for @resource do |f| %>
+    <%= form_for @resource, :url => resource_path(@resource), :html => {:method => :put} do |f| %>
       <p><%= f.label :read, "mark resource as read" %>
       <%= f.check_box :read %></p>
       <p><%= f.label :student_rating, "did you find this resource helpful?" %><p>
