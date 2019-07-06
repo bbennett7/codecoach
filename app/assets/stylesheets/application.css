@@ -17,26 +17,28 @@
  light grey: rgb(219, 221, 224);
  */
 
+ /* ---------- section styling ---------- */
+
+
+ header {
+   width: 110%;
+   height: 110px;
+   background-color: rgb(4, 56, 39);
+   border: solid 2px black;
+   font-weight: 200;
+   font-family: 'Raleway', sans-serif;
+   color: rgb(101, 104, 102);
+   font-size: 3em;
+   padding-top: 25px;
+   padding-left: 10px;
+   margin-left: -2%;
+   margin-top: -1%;
+   margin-bottom: 1.5%;
+ }
+
 body {
   background-color: rgb(204, 217, 229);
   height: auto;
-}
-
-header {
-  width: 110%;
-  height: 110px;
-  background-color: rgb(4, 56, 39);
-  border: solid 2px black;
-  font-weight: 200;
-  font-family: 'Raleway', sans-serif;
-  color: rgb(101, 104, 102);
-  font-size: 3em;
-  padding-top: 25px;
-  padding-left: 10px;
-  margin-left: -2%;
-  margin-top: -1%;
-  margin-bottom: 1.5%;
-  /* box-shadow: 3px 3px black; */
 }
 
 footer {
@@ -55,21 +57,6 @@ footer {
   margin-left: -52%;
 }
 
-footer > h6 {
-  margin-top: 16px;
-  margin-bottom: 0px;
-  margin-left: 2%;
-  margin-right: 9%;
-  line-height: 1em;
-  font-size: .2em;
-  text-align: center;
-}
-
-footer > h6 > a, footer > h6 > a:visited {
-  text-decoration: none;
-  color: rgb(101, 104, 102);
-}
-
 nav {
   width: 150px;
   height: 100%;
@@ -80,6 +67,15 @@ nav {
   box-shadow: 2px 2px rgb(112,128,144);
 }
 
+
+/* ---------- header, paragraph, input and select styling ---------- */
+
+
+h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit], button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
 nav h4 {
   border: solid 1px rgb(4, 56, 39);
   padding: 12px 15px;
@@ -87,15 +83,38 @@ nav h4 {
   margin-top: 0px;
 }
 
-h1, h2, h3, h4, h5, h6, input[type=submit], input[type=submit], button {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
+footer > h6 {
+  margin-top: 16px;
+  margin-bottom: 0px;
+  margin-left: 2%;
+  margin-right: 9%;
+  line-height: 1em;
+  font-size: .2em;
+  text-align: center;
 }
 
 p, label {
   font-family: 'PT Serif', serif;
   font-weight: 400;
 }
+
+input[type=submit], input[type=radio] {
+  background-color: rgb(4, 56, 39);
+  color: rgb(219, 221, 224);
+  font-size: 1em;
+  padding: 6px 40px;
+  border-radius: 5px;
+}
+
+select {
+  background-color: rgb(234, 241, 248);
+  color: rgb(4, 56, 39);
+  font-size: .9em;
+}
+
+
+/* ---------- link styling ---------- */
+
 
 a, a:visited {
   color: rgb(4, 56, 39);
@@ -114,10 +133,23 @@ h2 a, h2 a:visited {
   text-decoration: none;
 }
 
+footer > h6 > a, footer > h6 > a:visited {
+  text-decoration: none;
+  color: rgb(101, 104, 102);
+}
+
+
+/* ---------- list item styling ---------- */
+
+
 li {
   font-family: 'PT Serif', serif;
   font-weight: 400;
 }
+
+
+/* ---------- button styling ---------- */
+
 
 button {
   background-color: rgb(4, 56, 39);
@@ -127,49 +159,18 @@ button {
   border-radius: 5px;
 }
 
-input[type=submit], input[type=radio] {
-  background-color: rgb(4, 56, 39);
-  color: rgb(219, 221, 224);
-  font-size: 1em;
-  padding: 6px 40px;
-  border-radius: 5px;
-}
 
-.new_resource input[type=text], .edit_resource input[type=text] {
-  width: 40%;
-  width-min: 20%;
+/* ---------- rule styling ---------- */
 
-}
-
-.new_resource select, .edit_resource select {
-  width: 25%;
-}
 
 hr {
   border: solid .5px rgb(4, 56, 39);
 }
 
-.form {
-  align: left;
-}
 
-select {
-  background-color: rgb(234, 241, 248);
-  color: rgb(4, 56, 39);
-  font-size: .9em;
-}
+/* ---------- class styling ---------- */
 
-#about {
-  margin: 30px 70px 0px 70px;
-  text-align: left;
-  font-size: .9em;
-}
-
-.main img {
-  border: solid 2px rgb(4, 56, 39);
-  padding: 10px;
-
-}
+/* - logged out main div styling - */
 
 .access_section {
   border: solid 1px rgb(4, 56, 39);
@@ -183,9 +184,16 @@ select {
   box-shadow: 2px 2px rgb(112,128,144);
 }
 
-#enter_site {
-  line-height: 9em;
-  vertical-align: bottom;
+.access_section label, .access_section input[type=text], .access_section input[type=password] {
+  text-align: right;
+  float: left;
+  padding-left: 100px;
+  padding-right: 10px;
+  width: 140px;
+}
+
+.access_section hr {
+  width: 80%;
 }
 
 .access_section h1 a, .access_section h1 a:visited  {
@@ -202,29 +210,7 @@ select {
   color: rgb(4, 56, 39);
 }
 
-.access_section label, .access_section input[type=text], .access_section input[type=password] {
-  text-align: right;
-  float: left;
-  padding-left: 100px;
-  padding-right: 10px;
-  width: 140px;
-}
-
-.access_section hr {
-  width: 80%;
-}
-
-.signup_radio {
-  width: 50%;
-  display: inline-block;
-  float: left;
-}
-
-.signup_radio > .field_with_errors {
-  text-align: right;
-  width: 50%;
-  margin-left: 10px;
-}
+/* - logged in main div styling - */
 
 .main {
   border: solid 1px rgb(4, 56, 39);
@@ -242,6 +228,14 @@ select {
   box-shadow: 2px 2px rgb(112,128,144);
 }
 
+.main img {
+  border: solid 2px rgb(4, 56, 39);
+  padding: 10px;
+
+}
+
+/* - recent resources div styling - */
+
 .recent_resources_col {
   border: solid 1px rgb(4, 56, 39);
   width: 25%;
@@ -255,6 +249,40 @@ select {
   display: inline-block;
   box-shadow: 2px 2px rgb(112,128,144);
 }
+
+/* - new_resource class styling - */
+
+.new_resource input[type=text], .edit_resource input[type=text] {
+  width: 40%;
+  width-min: 20%;
+
+}
+
+.new_resource select, .edit_resource select {
+  width: 25%;
+}
+
+/* - form class styling - */
+
+.form {
+  align: left;
+}
+
+/* - signup page radio button styling - */
+
+.signup_radio {
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.signup_radio > .field_with_errors {
+  text-align: right;
+  width: 50%;
+  margin-left: 10px;
+}
+
+/* - error styling - */
 
 .field_with_errors {
   display: block;
@@ -277,4 +305,17 @@ select {
   width: 400px;
   display: inherit;
   margin: auto;
+}
+
+/* ---------- id styling ---------- */
+
+#about {
+  margin: 30px 70px 0px 70px;
+  text-align: left;
+  font-size: .9em;
+}
+
+#enter_site {
+  line-height: 9em;
+  vertical-align: bottom;
 }
