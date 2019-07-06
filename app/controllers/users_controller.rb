@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :current_user, only:[:show, :get_coach, :set_user_type, :update]
   before_action :logged_in?, except: [:new, :create]
+  before_action :logged_out?, only:[:new, :create]
   before_action :current_user_is_student?, only: [:index]
   before_action :current_user_route, only: [:show, :edit]
 

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+before_action :logged_out?, only:[:index]
 
   private
 
@@ -58,11 +59,17 @@ class ApplicationController < ActionController::Base
   def logged_in?
     if session[:user_id].nil?
       redirect_to root_path
+    else
+      true
     end
   end
 
 # validates if a user is not logged_in
   def logged_out?
-    !!session[:user_id].nil?
+    if session[:user_id]
+      redirect_to user_path(current_user)
+    else
+      true
+    end
   end
 end

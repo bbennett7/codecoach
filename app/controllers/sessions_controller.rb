@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :logged_in?, only:[:logout]
+  before_action :logged_out?, only:[:new, :create, :gh_create]
 
   def new
     @user = User.new
