@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :resources
   has_many :subfields, through: :resources
 
+#self referential join table relationship, user can belong to user 
   has_one :student, class_name: "User", foreign_key: "coach_id"
   belongs_to :coach, class_name: "User", required: false
 
@@ -30,6 +31,7 @@ class User < ApplicationRecord
 
   private
 
+#used to validate presence of a GitHub link for coaches but not students
   def coach?
     user_type == "coach"
   end
