@@ -7,7 +7,7 @@
     <%if current_user_is_coach? && current_user.student %>
       <h4><%= link_to "my student", user_student_path(current_user.student) %></h4>
     <% end %>
-    
+
   <% elsif current_user_is_student? && current_user.coach_id.nil? %>
     <h4><%= link_to "find a coach", find_a_coach_path %></h4>
   <% elsif current_user_is_student? && current_user.coach_id %>
@@ -15,4 +15,4 @@
   <% end %>
 
   <h4><%= link_to "top resources", top_resources_path %></h4>
-  <h4><%= link_to "log out", logout_path %></h4>
+  <h4><%= link_to "logout", logout_path %></h4>

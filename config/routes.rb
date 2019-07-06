@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/choose_user_type', to: 'users#choose_user_type'
   post '/set_user_type', to: 'users#set_user_type'
   get '/logout', to: 'sessions#logout'
+  get '/about', to: 'application#about'
 
   resources :users
 

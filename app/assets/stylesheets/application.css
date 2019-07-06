@@ -34,7 +34,7 @@ header {
   padding-top: 20px;
   margin-left: -2%;
   margin-top: -1%;
-  margin-bottom: 1%;
+  margin-bottom: 1.5%;
   /* box-shadow: 3px 3px black; */
 }
 
@@ -64,10 +64,9 @@ footer > h6 {
   text-align: center;
 }
 
-#footer_clear {
-  width: 100%;
-  display: inline;
-  float: left;
+footer > h6 > a, footer > h6 > a:visited {
+  text-decoration: none;
+  color: rgb(101, 104, 102);
 }
 
 nav {
