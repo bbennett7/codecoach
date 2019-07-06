@@ -2,9 +2,11 @@ class LanguagesController < ApplicationController
   before_action :logged_in?
   before_action :current_user, only:[:create, :destroy]
 
+
   def new_or_destroy
     @language = Language.new
   end
+
 
   def create
     if language_params[:name].empty? && language_params[:id].nil?
@@ -20,6 +22,7 @@ class LanguagesController < ApplicationController
       redirect_to user_path(@current_user)
     end
   end
+
 
   def destroy
     @languages = language_delete_params[:id]
@@ -39,6 +42,7 @@ class LanguagesController < ApplicationController
     params.require(:language).permit(:name, :id)
   end
 
+# validates id params to accept an array of ids to be deleted at the same time 
   def language_delete_params
     params.require(:language).permit(:id => [])
   end

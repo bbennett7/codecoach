@@ -10,6 +10,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new
   end
 
+# sorts resources into resources marked priority, resources marked read and unread resources
   def index
     @resources = []
 

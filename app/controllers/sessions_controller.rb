@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     end
   end
 
+#new session path when logging in through GitHub account
   def gh_create
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.username = auth['info']['nickname']
@@ -33,7 +34,7 @@ class SessionsController < ApplicationController
       redirect_to choose_user_type_path
     else
       redirect_to user_path(@user)
-    end 
+    end
   end
 
   def logout

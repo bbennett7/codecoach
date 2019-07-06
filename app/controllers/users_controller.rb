@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :current_user_is_student?, only: [:index]
   before_action :current_user_route, only: [:show, :edit]
 
+#display for find a coach page
   def index
     @available_coaches = User.all.collect{|user| user if user.student.nil? && user.user_type == "coach"}
     @available_coaches.compact!
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
     end
   end
 
+#post action when student chooses a coach
   def get_coach
     @current_user.coach_id = params[:coach_id]
     User.find_by_id(params[:coach_id]).student = @current_user
