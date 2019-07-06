@@ -11,11 +11,18 @@
 <% end %>
 
 <%= form_for user do |f|%>
-  <%= f.label :user_type, "coach", class: "radio" %>
-  <%= f.radio_button :user_type, "coach", class: "radio" %><br>
-  <%= f.label :user_type, "student", class: "radio"  %>
-  <%= f.radio_button :user_type, "student" %><br><br>
-
+<h4>choose account type</h4>
+  <div class="signup_radio">
+    <p>coach</p>
+    <%= f.radio_button :user_type, "coach" %><br><br>
+  </div>
+  <div class="signup_radio">
+    <p>student</p>
+    <%= f.radio_button :user_type, "student"%><br><br>
+  </div>
+  <br>
+  <hr>
+  <br>
   <%= f.label :first_name, "first name" %>
   <%= f.text_field :first_name %><br><br>
 
