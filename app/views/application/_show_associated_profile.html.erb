@@ -8,9 +8,7 @@
     <h3><%= link_to "#{associated_user.first_name}'s GitHub", "http://#{associated_user.github_link}" %></h3>
   <% end %>
 
-  <br>
-  <br>
-  <hr>
+  <br><br><hr>
 
   <h3><%= associated_user.first_name %>'s programming languages</h3>
   <% if associated_user.languages.empty? %>

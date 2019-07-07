@@ -15,6 +15,7 @@
     <br>
   <% end %>
 
+<!-- add language form -->
   <%= form_for @language do |f| %>
     <%= f.label :id, "select a language" %>
     <%= f.collection_select :id, Language.all, :id, :name, :include_blank => true %><br><br>
@@ -23,6 +24,7 @@
     <%= f.submit "add language" %>
   <% end %>
 
+<!-- delete languages form -->
   <% if !current_user.languages.empty? %>
   <br><hr>
     <h3>delete a language from your profile:</h3>
