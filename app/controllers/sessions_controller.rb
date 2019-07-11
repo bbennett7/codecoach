@@ -26,12 +26,13 @@ class SessionsController < ApplicationController
       u.profile_img = auth['info']['image']
       u.github_link = auth['info']['urls']['GitHub']
       u.uid = auth['uid']
+      u.type = "github"
       u.password = SecureRandom.urlsafe_base64(n=6)
     end
 
     session[:user_id] = @user.id
 
-    if @user.user_type.nil?
+    if @user.user_type == "github"
       redirect_to choose_user_type_path
     else
       redirect_to user_path(@user)
