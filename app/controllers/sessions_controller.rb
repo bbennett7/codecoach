@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
 
     if @user.user_type == "github"
-      redirect_to choose_user_type_path
+      render choose_user_type_path
     else
       redirect_to user_path(@user)
     end
