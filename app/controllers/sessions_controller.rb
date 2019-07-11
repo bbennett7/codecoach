@@ -19,7 +19,9 @@ class SessionsController < ApplicationController
 
 #new session path when logging in through GitHub account
   def gh_create
+    console.log("here")
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      console.log(u)
       u.username = auth['info']['nickname']
       u.first_name = auth['info']['name']
       u.email = auth['info']['email']
@@ -28,12 +30,13 @@ class SessionsController < ApplicationController
       u.uid = auth['uid']
       u.type = "github"
       u.password = SecureRandom.urlsafe_base64(n=6)
+      console.log(u)
       u.save
+      console.log(u)
     end
-    console.log(@user)
+
     session[:user_id] = @user.id
-    console.log(session[:user_id])
-    console.log(@user.user_type)
+
     if @user.user_type == "github"
       redirect_to choose_user_type_path
     else
