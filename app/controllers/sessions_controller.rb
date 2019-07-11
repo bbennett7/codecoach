@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
       u.uid = auth['uid']
       u.type = "github"
       u.password = SecureRandom.urlsafe_base64(n=6)
+      u.save
     end
 
     session[:user_id] = @user.id
