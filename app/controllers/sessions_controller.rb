@@ -30,9 +30,10 @@ class SessionsController < ApplicationController
       u.password = SecureRandom.urlsafe_base64(n=6)
       u.save
     end
-
+    console.log(@user)
     session[:user_id] = @user.id
-
+    console.log(session[:user_id])
+    console.log(@user.user_type)
     if @user.user_type == "github"
       redirect_to choose_user_type_path
     else
