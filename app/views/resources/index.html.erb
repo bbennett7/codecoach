@@ -70,6 +70,7 @@
 
 
 <script type="text/javascript" charset="utf-8">
+  console.log(window.location.host)
   function resourceInfo() {
     const resourceId = parseInt(event.target.dataset.resourceId);
     const userInfo = event.target.dataset.userInfo;
@@ -79,9 +80,10 @@
 
     liResources.remove()
 
-    const resourcesUrl = `http://localhost:3000${userInfo}/resources/${resourceId}`
+  //  const resourcesUrl = `http://localhost:3000${userInfo}/resources/${resourceId}`
+    const userResourceRoute = '${userInfo}/resources/${resourceId}'
 
-    fetch(resourcesUrl)
+    fetch(userResourceRoute)
       .then( response => response.json())
       .then( json => resourceDiv.innerHTML = resourceInfo(json))
 

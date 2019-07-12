@@ -20,11 +20,13 @@
 
 
 <script type="text/javascript" charset="utf-8">
-  var currentUserUrl = 'http://localhost:3000<%= user_path(current_user) %>'
-
+  var protocol = window.location.protocol
+  var hostUrl = window.location.host
   var languagesDiv = document.getElementById("languages");
+  var userUrl = languagesDiv.dataset.userUrl;
+  var currentUserRoute = `${protocol}//${hostUrl}${userUrl}`
 
-  fetch(currentUserUrl)
+  fetch(currentUserRoute)
     .then( response => response.json())
     .then( response => languagesDiv.innerHTML = listOfLanguages(response.languages) )
 

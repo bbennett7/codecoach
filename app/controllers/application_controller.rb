@@ -8,6 +8,11 @@ before_action :logged_out?, only:[:index]
     @current_user = User.find_by_id(session[:user_id])
   end
 
+# returns current user homepage url
+  def current_user_url
+    'https://code-coach-app.herokuapp.com/' + user_path(current_user)
+  end
+
 # returns true if current user is a coach, redirects to user home if false
   def current_user_is_coach?
     if current_user.user_type == "coach"
