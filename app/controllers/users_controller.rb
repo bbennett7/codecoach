@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in?, except: [:new, :create]
   before_action :logged_out?, only:[:new, :create]
   before_action :current_user_is_student?, only: [:index]
-  before_action :current_user_route, only: [:show, :edit]
+  # before_action :current_user_route, only: [:show, :edit]
 
 #display for find a coach page
   def index

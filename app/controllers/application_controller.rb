@@ -1,16 +1,11 @@
 class ApplicationController < ActionController::Base
-before_action :logged_out?, only:[:index]
+ before_action :logged_out?, only:[:root]
 
   private
 
 # returns currently logged in user
   def current_user
     @current_user = User.find_by_id(session[:user_id])
-  end
-
-# returns current user homepage url
-  def current_user_url
-    'https://code-coach-app.herokuapp.com/' + user_path(current_user)
   end
 
 # returns true if current user is a coach, redirects to user home if false
@@ -33,18 +28,12 @@ before_action :logged_out?, only:[:index]
 
 # validates if profile page requested belongs to user or associated user
   def current_user_route
-    if params[:user_id]
-      if current_user.id == params[:user_id].to_i
-        true
-      else
-        redirect_to user_path(@current_user)
-      end
+    if params[:id] && current_user.id == params[:id].to_i
+      true
+    elsif params[:id] && current_user.id != params[:id].to_i
+      redirect_to user_path(@current_user)
     else
-      if current_user.id == params[:id].to_i
-        true
-      else
-        redirect_to user_path(@current_user)
-      end
+      redirect_to root_path
     end
   end
 
@@ -60,7 +49,7 @@ before_action :logged_out?, only:[:index]
     end
   end
 
-# validates if a user is logged_in
+# validates if a user is logged_in, reroutes to root_path if not
   def logged_in?
     if session[:user_id].nil?
       redirect_to root_path
@@ -69,7 +58,7 @@ before_action :logged_out?, only:[:index]
     end
   end
 
-# validates if a user is not logged_in
+# validates if a user is logged_in, reroutes to home_page if so
   def logged_out?
     if session[:user_id]
       redirect_to user_path(current_user)

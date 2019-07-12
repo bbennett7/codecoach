@@ -68,20 +68,21 @@
 <% end %>
 </div>
 
-
 <script type="text/javascript" charset="utf-8">
-  console.log(window.location.host)
   function resourceInfo() {
-    const resourceId = parseInt(event.target.dataset.resourceId);
+    const protocol = window.location.protocol
+    const hostUrl = window.location.host
     const userInfo = event.target.dataset.userInfo;
+    const resourceId = parseInt(event.target.dataset.resourceId);
     const resourceDiv = document.getElementById("resource-" + resourceId)
+
+    const resourcesUrl = `${protocol}//${hostUrl}${userInfo}/resources/${resourceId}`
 
     const liResources = $(".liResource")
 
     liResources.remove()
 
-  //  const resourcesUrl = `http://localhost:3000${userInfo}/resources/${resourceId}`
-    const userResourceRoute = '${userInfo}/resources/${resourceId}'
+    const userResourceRoute = `${protocol}//${hostUrl}${userInfo}/resources/${resourceId}`
 
     fetch(userResourceRoute)
       .then( response => response.json())
