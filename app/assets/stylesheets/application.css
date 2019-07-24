@@ -259,6 +259,7 @@ hr {
   margin-bottom: 3%;
   column-count: 2;
   column-fill: balance;
+  width: 80%;
 }
 
 #Coach-location {

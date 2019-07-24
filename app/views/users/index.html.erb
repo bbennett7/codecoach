@@ -7,11 +7,10 @@
     <div class="Coaches">
       <% @available_coaches.each do |coach| %>
         <div class="Find-coach-card">
-          <img src="<%= coach.profile_img %>", alt="<%= coach.username %>'s profile picture" width="100" height="100"><br><br>
-          <h4><%= coach.first_name %> <%= coach.last_name %></h4><br>
-          <br>
+          <img src="<%= coach.profile_img %>", alt="<%= coach.username %>'s profile picture" width="100" height="100"><br>
+          <h4><%= coach.first_name %> <%= coach.last_name %></h4>
           <h4 id="Coach-location">location:</h4>
-          <%= coach.location %><br><br>
+          <%= coach.location %><br>
           <h4 id="Coach-languages">languages:</h4>
           <% coach.languages.each do |language| %>
             <%= language.name %><br>
