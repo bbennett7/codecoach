@@ -257,6 +257,7 @@ hr {
   float: left;
   padding: 1.5%;
   margin: 2%;
+  display: inline-block;
   vertical-align: top;
 }
 
