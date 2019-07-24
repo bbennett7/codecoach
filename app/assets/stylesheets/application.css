@@ -255,7 +255,8 @@ hr {
 .Find-coach-card {
   border: solid 1px black;
   float: left;
-  padding: 2%;
+  padding: 1.5%;
+  margin: 2%
 }
 
 .Find-coach-card input[type="submit"] {
