@@ -11,7 +11,7 @@
 <script type="text/javascript" charset="utf-8">
   let resourcesDiv = document.getElementById("resources")
 
-  fetch('http://localhost:3000/resources/top_resources')
+  fetch('https://code-coach-app.herokuapp.com/resources/top_resources')
     .then( response => response.json())
     .then( response => resourcesDiv.innerHTML = makeResourceLinks(response) )
 
