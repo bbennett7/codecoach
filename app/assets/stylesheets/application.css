@@ -257,10 +257,12 @@ hr {
   float: left;
   padding: 1.5%;
   margin: 2%
+  vertical-align: top;
 }
 
 .Find-coach-card input[type="submit"] {
   width: 90%;
+  margin: 3px auto;
 }
 
 /* - new_resource class styling - */
