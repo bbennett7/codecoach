@@ -5,17 +5,19 @@
     <p>there are no available coaches </p>
   <% else %>
     <% @available_coaches.each do |coach| %>
-      <img src="<%= coach.profile_img %>", alt="<%= coach.username %>'s profile picture" width="100" height="100"><br>
-      <%= coach.first_name %> <%= coach.last_name %><br>
-      <%= coach.location %><br>
-      <% coach.languages.each do |language| %>
-        <%= language.name %><br>
-      <% end %>
+      <div class="Find-coach-card">
+        <img src="<%= coach.profile_img %>", alt="<%= coach.username %>'s profile picture" width="100" height="100"><br>
+        <%= coach.first_name %> <%= coach.last_name %><br>
+        <%= coach.location %><br>
+        <% coach.languages.each do |language| %>
+          <%= language.name %><br>
+        <% end %>
 
-      <%= form_tag('/get_coach', method: :post) do %>
-        <%= hidden_field_tag 'coach_id', value=coach.id %>
-        <%= submit_tag "be my coach" %>
-      <% end %>
+        <%= form_tag('/get_coach', method: :post) do %>
+          <%= hidden_field_tag 'coach_id', value=coach.id %>
+          <%= submit_tag "be my coach" %>
+        <% end %>
+      </div>
       <br><br>
     <% end %>
   <% end %>

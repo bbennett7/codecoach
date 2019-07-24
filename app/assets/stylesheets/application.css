@@ -250,6 +250,18 @@ hr {
   box-shadow: 2px 2px rgb(112,128,144);
 }
 
+/* - find a coach card styling - */
+
+.Find-coach-card {
+  border: solid 1px black;
+  float: left;
+  padding: 2%;
+}
+
+.Find-coach-card input[type="submit"] {
+  width: 90%;
+}
+
 /* - new_resource class styling - */
 
 .new_resource input[type=text], .edit_resource input[type=text] {
