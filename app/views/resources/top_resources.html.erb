@@ -9,7 +9,7 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  let resourcesDiv = document.getElementById("resources")
+  var resourcesDiv = document.getElementById("resources")
 
   fetch('https://code-coach-app.herokuapp.com/resources/top_resources')
     .then( response => response.json())
